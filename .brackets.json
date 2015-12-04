@@ -1,0 +1,9 @@
+{
+  "jslint.options": {
+    "node": true,
+    "browser": true,
+    "predef": [
+      "angular"
+    ]
+  }
+}
