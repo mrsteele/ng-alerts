@@ -1,21 +1,26 @@
 
-angular.module('ngNotify').factory('ngNotifyMngr', ['NgNotification', function (NgNotification) {
+angular.module('ngNotify').factory('ngNotifyMngr', ['ngNotifyEvent', 'NgNotification', function (ngNotifyEvent, NgNotification) {
     var notifications = [],
         mngr = {};
+    
+    function fire(name) {
+        ngNotifyEvent.fire(name);
+        ngNotifyEvent.fire('change');
+    }
 
     mngr.get = function () {
         return angular.copy(notifications);
     };
 
-    mngr.empty = function () {
+    mngr.reset = function () {
         notifications = [];
+        fire('reset');
     };
 
     mngr.add = function (msg) {
         notifications.push(new NgNotification(msg));
+        fire('remove');
     };
-
-    mngr.add('testing');
 
     return mngr;
 }]);
