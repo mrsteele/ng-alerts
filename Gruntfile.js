@@ -22,7 +22,7 @@ module.exports = function (grunt) {
                 stripBanners: false
             },
             dist: {
-                src: 'src/ng-notify.js',
+                src: ['src/ng-notify.js', 'src/**/*.js'],
                 dest: 'dist/ng-notify.js'
             }
         },
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
                     sourceMap: true
                 },
                 files: {
-                    'dist/ng-notify.min.js': 'src/ng-notify.js'
+                    'dist/ng-notify.min.js': ['src/ng-notify.js', 'src/**/*.js']
                 }
             }
         },
