@@ -1,8 +1,13 @@
+var path = require('path');
+
 module.exports = function (grunt) {
     "use strict";
 
     // Force use of Unix newlines
     grunt.util.linefeed = '\n';
+    
+    // Load Grunt tasks declared in the package.json file
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     // Project configuration.
     grunt.initConfig({
@@ -54,17 +59,69 @@ module.exports = function (grunt) {
         },
 
         // cleans directories
-        clean: ['dist']
+        clean: ['dist'],
+        
+        // preserve templates
+        ngtemplates: {
+            ngNotify: {
+                src: '**.html',
+                dest: 'dist/ng-notify-tpls.js',
+                cwd: 'src/tpls/',
+                options:  {
+                    url: function (url) {
+                        return 'ng-notify/' + url;
+                    }
+                }
+            }
+        },
+        
+        
+        ///////////
+        // DEBUG //
+        ///////////
+        
+        express: {
+            all: {
+                options: {
+                    port: 3000,
+                    hostname: '0.0.0.0',
+                    livereload: true,
+                    bases: [path.resolve(__dirname)]
+                }
+            }
+        },
+        
+        // watch during development
+        watch: {
+            options: {
+                livereload: true
+            },
+            all: {
+                files: 'src/**/*.*',
+                tasks: ['default']
+            }
+        },
+        
+        open: {
+            all: {
+                path: 'http://localhost:3000/test/index.html'
+            }
+        }
 
     });
 
-    // load plugins
-
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-less');
-
-    grunt.registerTask('default', ['clean', 'concat', 'uglify', 'less']);
+    grunt.registerTask('default', [
+        'clean',
+        'concat',
+        'uglify',
+        'ngtemplates',
+        'less'
+    ]);
+    
+    grunt.registerTask('test', [
+        'express',
+        'open',
+        'watch'
+    ]);
 
 };

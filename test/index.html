@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>ng-notify tests</title>
+    <meta name="description" content="ng-notify">
+    <meta name="author" content="Matthew Steele">
+    
+    <!-- dependencies -->
+    <link rel="stylesheet" href="../node_modules/angular/angular-csp.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../node_modules/angular-ui-bootstrap/ui-bootstrap-csp.css">
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
+
+    <!-- ng-grid files-->
+    <link rel="stylesheet" href="../dist/ng-notify.css">
+    <script src="../dist/ng-notify.js"></script>
+    <script src="../dist/ng-notify-tpls.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    
+    <script>
+        var testApp = angular.module('testApp', [
+            'ngNotify'
+        ]);
+    </script>
+    
+    <div ng-app="testApp">
+        A test file for the ng-notify project.
+        <ng-notify-list></ng-notify-list>
+    </div>
+</body>
+</html>

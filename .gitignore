@@ -52,6 +52,7 @@ node_modules
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
+
 Network Trash Folder
 Temporary Items
 .apdisk
@@ -77,3 +78,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
