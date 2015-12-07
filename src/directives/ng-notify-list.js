@@ -2,6 +2,20 @@ angular.module('ngNotify').directive('ngNotifyList', ['ngNotifyMngr', function (
     'use strict';
     
     return {
-        templateUrl: 'ng-notify/list.html'
+        templateUrl: 'ng-notify/list.html',
+        controller: [
+            '$scope',
+            'ngNotifyMngr',
+            'ngNotifyEvent',
+            function ($scope, ngNotifyMngr, ngNotifyEvent) {
+                function reset() {
+                    $scope.notifications = ngNotifyMngr.get();
+                }
+
+                $scope.$on(ngNotifyEvent.event('change'), reset);
+
+                reset();
+            }
+        ]
     };
 }]);

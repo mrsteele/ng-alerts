@@ -3,17 +3,6 @@
 
 var app = angular.module('ngNotify', []);
 
-angular.module('ngNotify').controller('ngNotifyCountCtrl', ['$scope', 'ngNotifyMngr', 'ngNotifyEvent', function ($scope, ngNotifyMngr, ngNotifyEvent) {
-    'use strict';
-    
-    function reset() {
-        $scope.count = ngNotifyMngr.get().length;
-    }
-    
-    reset();
-    
-    $scope.$on(ngNotifyEvent.event('change'), reset);
-}]);
 angular.module('ngNotify').controller('ngNotifyListCtrl', ['$scope', 'ngNotifyMngr', 'ngNotifyEvent', function ($scope, ngNotifyMngr, ngNotifyEvent) {
     'use strict';
     
@@ -29,14 +18,42 @@ angular.module('ngNotify').directive('ngNotifyCount', function () {
     'use strict';
     
     return {
-        templateUrl: 'ng-notify/count.html'
+        templateUrl: 'ng-notify/count.html',
+        controller: [
+            '$scope',
+            'ngNotifyMngr',
+            'ngNotifyEvent',
+            function ($scope, ngNotifyMngr, ngNotifyEvent) {
+                function reset() {
+                    $scope.count = ngNotifyMngr.get().length;
+                }
+
+                reset();
+
+                $scope.$on(ngNotifyEvent.event('change'), reset);
+            }
+        ]
     };
 });
 angular.module('ngNotify').directive('ngNotifyList', ['ngNotifyMngr', function (ngNotifyMngr) {
     'use strict';
     
     return {
-        templateUrl: 'ng-notify/list.html'
+        templateUrl: 'ng-notify/list.html',
+        controller: [
+            '$scope',
+            'ngNotifyMngr',
+            'ngNotifyEvent',
+            function ($scope, ngNotifyMngr, ngNotifyEvent) {
+                function reset() {
+                    $scope.notifications = ngNotifyMngr.get();
+                }
+
+                $scope.$on(ngNotifyEvent.event('change'), reset);
+
+                reset();
+            }
+        ]
     };
 }]);
 

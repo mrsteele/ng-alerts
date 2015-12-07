@@ -2,7 +2,7 @@ angular.module('ngNotify').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('ng-notify/count.html',
-    "<span ng-controller=\"ngNotifyCountCtrl\" class=\"badge\">{{count}}</span>"
+    "<span class=\"badge\">{{count}}</span>"
   );
 
 
