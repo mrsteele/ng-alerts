@@ -2,7 +2,11 @@ angular.module('ngNotify').directive('ngNotifyCount', function () {
     'use strict';
     
     return {
-        templateUrl: 'ng-notify/count.html',
+        templateUrl: 'templates/ng-notify/count.html',
+        scope: {
+            badge: '@',
+            hideEmpty: '@'
+        },
         controller: [
             '$scope',
             'ngNotifyMngr',
@@ -10,6 +14,10 @@ angular.module('ngNotify').directive('ngNotifyCount', function () {
             function ($scope, ngNotifyMngr, ngNotifyEvent) {
                 function reset() {
                     $scope.count = ngNotifyMngr.get().length;
+                    
+                    if ($scope.count === 0 && $scope.hideEmpty) {
+                        $scope.count = '';
+                    }
                 }
 
                 reset();

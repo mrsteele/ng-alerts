@@ -20,7 +20,7 @@ angular.module('ngNotify').factory('ngNotifyMngr', ['ngNotifyEvent', 'NgNotifica
 
     mngr.add = function (msg) {
         notifications.push(new NgNotification(msg));
-        fire('remove');
+        fire('add');
     };
 
     return mngr;

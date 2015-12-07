@@ -2,7 +2,7 @@ angular.module('ngNotify').directive('ngNotifyList', ['ngNotifyMngr', function (
     'use strict';
     
     return {
-        templateUrl: 'ng-notify/list.html',
+        templateUrl: 'templates/ng-notify/list.html',
         controller: [
             '$scope',
             'ngNotifyMngr',

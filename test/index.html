@@ -39,8 +39,29 @@
     </script>
     
     <div ng-controller="TestCtrl">
-        Below is a list of notifications. There is a total of <ng-notify-count></ng-notify-count> notifications. <button class="btn btn-default" ng-click="createNotification()">Add Notification</button>
-        <ng-notify-list></ng-notify-list>
+    
+        <!-- navbar -->
+        <div class="navbar-default">
+            <div class="container">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="t" href="#" ng-notify-popover position="bottom"><ng-notify-count badge="true" hide-empty="true"></ng-notify-count> notifications</a></li>
+                    <li><a href="#" ng-click="createNotification()">Add notification.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- jumbotron -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                        <p align="right">Use these buttons to test! ^</p>
+                        <h1>ng-notify</h1>
+                        <p>The only angular notification system you need!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
