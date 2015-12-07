@@ -7,7 +7,7 @@ angular.module('ngNotify').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('ng-notify/list.html',
-    "<ul ng-controller=\"ngNotifyListCtrl\">\r" +
+    "<ul>\r" +
     "\n" +
     "    <li ng-repeat=\"notification in notifications\">\r" +
     "\n" +
