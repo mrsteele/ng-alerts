@@ -1,5 +1,6 @@
-
 angular.module('ngNotify').factory('ngNotifyMngr', ['ngNotifyEvent', 'NgNotification', function (ngNotifyEvent, NgNotification) {
+    'use strict';
+    
     var notifications = [],
         mngr = {};
     

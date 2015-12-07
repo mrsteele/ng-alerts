@@ -1,6 +1,5 @@
-'use strict';
-
 angular.module('ngNotify').service('ngNotifyEvent', ['$rootScope', function ($rootScope) {
+    'use strict';
     
     this.event = function (name) {
         return 'ngNotify.' + name;

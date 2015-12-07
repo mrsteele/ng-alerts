@@ -1,7 +1,12 @@
 angular.module('ngNotify').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('ng-notify/notification-list.html',
+  $templateCache.put('ng-notify/count.html',
+    "<span ng-controller=\"ngNotifyCountCtrl\" class=\"badge\">{{count}}</span>"
+  );
+
+
+  $templateCache.put('ng-notify/list.html',
     "<ul ng-controller=\"ngNotifyListCtrl\">\r" +
     "\n" +
     "    <li ng-repeat=\"notification in notifications\">\r" +

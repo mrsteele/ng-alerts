@@ -1,7 +1,7 @@
-'use strict';
-
 angular.module('ngNotify').directive('ngNotifyList', ['ngNotifyMngr', function (ngNotifyMngr) {
+    'use strict';
+    
     return {
-        templateUrl: 'ng-notify/notification-list.html'
+        templateUrl: 'ng-notify/list.html'
     };
 }]);

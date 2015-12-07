@@ -1,12 +1,22 @@
-/*! ng-notify 2015-12-05 */
+/*! ng-notify 2015-12-06 */
 'use strict';
 
 var app = angular.module('ngNotify', []);
 
-'use strict';
-
+angular.module('ngNotify').controller('ngNotifyCountCtrl', ['$scope', 'ngNotifyMngr', 'ngNotifyEvent', function ($scope, ngNotifyMngr, ngNotifyEvent) {
+    'use strict';
+    
+    function reset() {
+        $scope.count = ngNotifyMngr.get().length;
+    }
+    
+    reset();
+    
+    $scope.$on(ngNotifyEvent.event('change'), reset);
+}]);
 angular.module('ngNotify').controller('ngNotifyListCtrl', ['$scope', 'ngNotifyMngr', 'ngNotifyEvent', function ($scope, ngNotifyMngr, ngNotifyEvent) {
-
+    'use strict';
+    
     function reset() {
         $scope.notifications = ngNotifyMngr.get();
     }
@@ -15,16 +25,24 @@ angular.module('ngNotify').controller('ngNotifyListCtrl', ['$scope', 'ngNotifyMn
     
     reset();
 }]);
-'use strict';
-
-angular.module('ngNotify').directive('ngNotifyList', ['ngNotifyMngr', function (ngNotifyMngr) {
+angular.module('ngNotify').directive('ngNotifyCount', function () {
+    'use strict';
+    
     return {
-        templateUrl: 'ng-notify/notification-list.html'
+        templateUrl: 'ng-notify/count.html'
+    };
+});
+angular.module('ngNotify').directive('ngNotifyList', ['ngNotifyMngr', function (ngNotifyMngr) {
+    'use strict';
+    
+    return {
+        templateUrl: 'ng-notify/list.html'
     };
 }]);
 
-
 angular.module('ngNotify').factory('NgNotification', function () {
+    'use strict';
+    
     var NgNotification = function (msg) {
         this.msg = msg || '';
     };
@@ -36,8 +54,9 @@ angular.module('ngNotify').factory('NgNotification', function () {
     return NgNotification;
 });
 
-
 angular.module('ngNotify').factory('ngNotifyMngr', ['ngNotifyEvent', 'NgNotification', function (ngNotifyEvent, NgNotification) {
+    'use strict';
+    
     var notifications = [],
         mngr = {};
     
@@ -62,9 +81,8 @@ angular.module('ngNotify').factory('ngNotifyMngr', ['ngNotifyEvent', 'NgNotifica
 
     return mngr;
 }]);
-'use strict';
-
 angular.module('ngNotify').service('ngNotifyEvent', ['$rootScope', function ($rootScope) {
+    'use strict';
     
     this.event = function (name) {
         return 'ngNotify.' + name;
