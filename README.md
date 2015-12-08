@@ -11,7 +11,7 @@ Only a few prerequisites to use this plugin (a prereq's prereqs listed as well).
 
 * AngularJS
 * Angular-UI Bootstrap
-** Bootstrap
+    * Bootstrap
 
 ## Can I contribute?
 
