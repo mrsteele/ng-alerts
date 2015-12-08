@@ -1,0 +1,26 @@
+{
+  "name": "ng-alerts",
+  "description": "An alert and notification management system",
+  "main": "Gruntfile.js",
+  "authors": [
+    "Matthew Steele"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "notify",
+    "notifications",
+    "alerts",
+    "alert"
+  ],
+  "homepage": "https://github.com/mrsteele/ng-alerts",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
