@@ -1,17 +1,17 @@
-<div ng-show="notifications.length > 0">
+<div ng-show="alerts.length > 0">
     <table class="table table-hover table-condensed">
         <thead>
             <tr>
-                <th colspan="2">Notification</th>
+                <th colspan="2">Message</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="notification in notifications">
+            <tr ng-repeat="alert in alerts">
                 <td>
-                    {{notification.msg}}
+                    {{alert.msg}}
                 </td>
                 <td>
-                    <button ng-click="remove(notification.id)" type="button" class="close" aria-label="Close">
+                    <button ng-click="remove(alert.id)" type="button" class="close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </td>
@@ -19,6 +19,6 @@
         </tbody>
     </table>
 </div>
-<div ng-show="notifications.length === 0">
-    No notifications. Better get active!
+<div ng-show="alerts.length === 0">
+    No messages. Better get active!
 </div>

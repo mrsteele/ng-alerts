@@ -2,8 +2,8 @@
 <head>
     <meta charset="utf-8">
 
-    <title>ng-notify tests</title>
-    <meta name="description" content="ng-notify">
+    <title>ng-alerts tests</title>
+    <meta name="description" content="ng-alerts">
     <meta name="author" content="Matthew Steele">
     
     <!-- dependencies -->
@@ -15,9 +15,9 @@
     <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
 
     <!-- ng-grid files-->
-    <link rel="stylesheet" href="../dist/ng-notify.css">
-    <script src="../dist/ng-notify.js"></script>
-    <script src="../dist/ng-notify-tpls.js"></script>
+    <link rel="stylesheet" href="../dist/ng-alerts.css">
+    <script src="../dist/ng-alerts.js"></script>
+    <script src="../dist/ng-alerts-tpls.js"></script>
 
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -28,12 +28,12 @@
     
     <script>
         var testApp = angular.module('testApp', [
-            'ngNotify'
+            'ngAlerts'
         ]);
         
-        testApp.controller('TestCtrl', ['$scope', 'ngNotifyMngr', function ($scope, ngNotifyMngr) {
-            $scope.createNotification = function () {
-                ngNotifyMngr.add('testing');
+        testApp.controller('TestCtrl', ['$scope', 'ngAlertsMngr', function ($scope, ngAlertsMngr) {
+            $scope.createAlert = function () {
+                ngAlertsMngr.add('testing');
             };
         }]);
     </script>
@@ -44,8 +44,8 @@
         <div class="navbar-default">
             <div class="container">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="t" href="#" ng-notify-popover position="bottom"><ng-notify-count badge="true" hide-empty="true"></ng-notify-count> notifications</a></li>
-                    <li><a href="#" ng-click="createNotification()">Add notification.</a></li>
+                    <li><a class="t" href="#" ng-alerts-popover position="bottom"><ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count> messages</a></li>
+                    <li><a href="#" ng-click="createAlert()">Create alert</a></li>
                 </ul>
             </div>
         </div>
@@ -56,8 +56,8 @@
                 <div class="col-md-12">
                     <div class="jumbotron">
                         <p align="right">Use these buttons to test! ^</p>
-                        <h1>ng-notify</h1>
-                        <p>The only angular notification system you need!</p>
+                        <h1>ng-alerts</h1>
+                        <p>The only angular alert and notification system you need!</p>
                     </div>
                 </div>
             </div>

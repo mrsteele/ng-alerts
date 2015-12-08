@@ -22,8 +22,8 @@ module.exports = function (grunt) {
                 stripBanners: false
             },
             dist: {
-                src: ['src/ng-notify.js', 'src/**/*.js'],
-                dest: 'dist/ng-notify.js'
+                src: ['src/ng-alerts.js', 'src/**/*.js'],
+                dest: 'dist/ng-alerts.js'
             }
         },
 
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
                     sourceMap: true
                 },
                 files: {
-                    'dist/ng-notify.min.js': ['src/ng-notify.js', 'src/**/*.js']
+                    'dist/ng-alerts.min.js': ['src/ng-alerts.js', 'src/**/*.js']
                 }
             }
         },
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
         less: {
             dist: {
                 files: {
-                    'dist/ng-notify.css': 'src/ng-notify.less'
+                    'dist/ng-alerts.css': 'src/ng-alerts.less'
                 }
             },
             min: {
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
                     compress: true
                 },
                 files: {
-                    'dist/ng-notify.min.css': 'src/ng-notify.less'
+                    'dist/ng-alerts.min.css': 'src/ng-alerts.less'
                 }
             }
         },
@@ -63,13 +63,13 @@ module.exports = function (grunt) {
         
         // preserve templates
         ngtemplates: {
-            ngNotify: {
+            ngAlerts: {
                 src: '**.html',
-                dest: 'dist/ng-notify-tpls.js',
+                dest: 'dist/ng-alerts-tpls.js',
                 cwd: 'src/tpls/',
                 options:  {
                     url: function (url) {
-                        return 'templates/ng-notify/' + url;
+                        return 'templates/ng-alerts/' + url;
                     }
                 }
             }

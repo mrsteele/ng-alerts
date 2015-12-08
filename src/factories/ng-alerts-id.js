@@ -1,4 +1,4 @@
-angular.module('ngNotify').factory('ngNotifyId', [
+angular.module('ngAlerts').factory('ngAlertsId', [
     function () {
         'use strict';
 

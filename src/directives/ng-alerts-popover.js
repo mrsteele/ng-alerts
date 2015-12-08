@@ -1,4 +1,4 @@
-angular.module('ngNotify').directive('ngNotifyPopover', [
+angular.module('ngAlerts').directive('ngAlertsPopover', [
     '$compile',
     '$timeout',
     function ($compile, $timeout) {
@@ -8,7 +8,7 @@ angular.module('ngNotify').directive('ngNotifyPopover', [
             link: function ($scope, $element, $attrs) {
 
                 var position = $attrs.position || 'top',
-                    $el = $compile('<div class="ng-notify-popover popover fade ' + position + ' in" role="tooltip" id="popover677443" style="top: 25477px; left: 266px; display: block;"><div class="arrow" style="left: 50%;"></div><div class="popover-content"><ng-notify-list></ng-notify-list></div></div>')($scope),
+                    $el = $compile('<div class="ng-alerts-popover popover fade ' + position + ' in" role="tooltip" id="popover677443" style="top: 25477px; left: 266px; display: block;"><div class="arrow" style="left: 50%;"></div><div class="popover-content"><ng-alerts-list></ng-alerts-list></div></div>')($scope),
                     body = angular.element(document).find('body');
                 
                 function hidePopover(e) {

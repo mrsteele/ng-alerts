@@ -1,14 +1,14 @@
-angular.module('ngNotify').directive('ngNotifyCount', [
-    'ngNotifyMngr',
-    'ngNotifyEvent',
-    function (ngNotifyMngr, ngNotifyEvent) {
+angular.module('ngAlerts').directive('ngAlertsCount', [
+    'ngAlertsMngr',
+    'ngAlertsEvent',
+    function (ngAlertsMngr, ngAlertsEvent) {
         'use strict';
     
         return {
-            templateUrl: 'templates/ng-notify/count.html',
+            templateUrl: 'templates/ng-alerts/count.html',
             link: function ($scope, $element, $attrs) {
                 function reset() {
-                    $scope.count = ngNotifyMngr.get().length;
+                    $scope.count = ngAlertsMngr.get().length;
                     $scope.badge = ($attrs.badge);
 
                     if ($scope.count === 0 && $attrs.hideEmpty) {
@@ -18,7 +18,7 @@ angular.module('ngNotify').directive('ngNotifyCount', [
 
                 reset();
 
-                $scope.$on(ngNotifyEvent.event('change'), reset);
+                $scope.$on(ngAlertsEvent.event('change'), reset);
             }
         };
     }

@@ -1,10 +1,10 @@
-angular.module('ngNotify').service('ngNotifyEvent', [
+angular.module('ngAlerts').service('ngAlertsEvent', [
     '$rootScope',
     function ($rootScope) {
         'use strict';
 
         this.event = function (name) {
-            return 'ngNotify.' + name;
+            return 'ngAlerts.' + name;
         };
 
         this.fire = function (name, args) {

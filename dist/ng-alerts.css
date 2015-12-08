@@ -1,13 +1,13 @@
-#ng-notify-alert-area {
+#ng-alerts-queue {
   position: fixed;
   bottom: 0;
   right: 0;
   padding-right: 10px;
 }
-#ng-notify-alert-area .alert {
+#ng-alerts-queue .alert {
   width: 470px;
 }
-.ng-notify-popover {
+.ng-alerts-popover {
   width: 480px;
   text-align: center;
 }

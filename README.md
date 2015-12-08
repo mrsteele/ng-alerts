@@ -1,9 +1,9 @@
-# ng-notify
-An angular extension to manager front-end notifications
+# ng-alerts
+An angular extension to manager front-end notifications and alerts.
 
 ### About
 
-I made this plugin in an attempt to manage any and all user-faces notifications. I wanted it clean, extensible, and scalable.
+I made this plugin in an attempt to manage any and all user-faces notifications and alerts. I wanted it clean, extensible, and scalable.
 
 ### Prerequisites
 
@@ -13,6 +13,16 @@ Only a few prerequisites to use this plugin (a prereq's prereqs listed as well).
 * Angular-UI Bootstrap
     * Bootstrap
 
-## Can I contribute?
+### Installation
+
+##### Node
+
+```npn install ng-alerts --save```
+
+##### Bower
+
+```bower install ng-alerts --save```
+
+### Can I contribute?
 
 YES! Pull requests welcome!

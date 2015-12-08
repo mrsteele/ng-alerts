@@ -1,5 +1,5 @@
 {
-  "name": "ng-notify",
+  "name": "ng-alerts",
   "version": "1.0.0",
   "description": "",
   "main": "Gruntfile.js",
@@ -8,20 +8,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrsteele/ng-notify.git"
+    "url": "git+https://github.com/mrsteele/ng-alerts.git"
   },
   "keywords": [
     "angular",
     "angularjs",
     "notify",
-    "notifications"
+    "notifications",
+    "alerts",
+    "alert"
   ],
   "author": "Matthew Steele",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mrsteele/ng-notify/issues"
+    "url": "https://github.com/mrsteele/ng-alerts/issues"
   },
-  "homepage": "https://github.com/mrsteele/ng-notify#readme",
+  "homepage": "https://github.com/mrsteele/ng-alerts#readme",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.9",
