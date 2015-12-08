@@ -1,13 +1,13 @@
-angular.module('ngNotify').factory('NgNotification', function () {
-    'use strict';
-    
-    var NgNotification = function (msg) {
-        this.msg = msg || '';
-    };
+angular.module('ngNotify').factory('NgNotification', [
+    'ngNotifyId',
+    function (ngNotifyId) {
+        'use strict';
 
-    NgNotification.prototype.getMsg = function () {
-        return this.msg;
-    };
+        var NgNotification = function (id, msg) {
+            this.id = id || ngNotifyId.create();
+            this.msg = msg || '';
+        };
 
-    return NgNotification;
-});
+        return NgNotification;
+    }
+]);

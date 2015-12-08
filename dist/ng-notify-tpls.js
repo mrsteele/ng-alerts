@@ -6,7 +6,7 @@ angular.module('ngNotify').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <div class=\"alert alert-warning\" ng-repeat=\"notification in notifications\">\r" +
     "\n" +
-    "        {{notification.getMsg()}}\r" +
+    "        {{notification.msg}}\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -15,38 +15,55 @@ angular.module('ngNotify').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('templates/ng-notify/count.html',
-    "<span ng-class=\"{'badge': badge}\">{{count}}</span>"
+    "<span ng-class=\"{'badge': badge}\">{{count}}</span>\r" +
+    "\n"
   );
 
 
   $templateCache.put('templates/ng-notify/list.html',
-    "<table class=\"table table-hover table-condensed\">\r" +
+    "<div ng-show=\"notifications.length > 0\">\r" +
     "\n" +
-    "    <thead>\r" +
+    "    <table class=\"table table-hover table-condensed\">\r" +
     "\n" +
-    "        <tr>\r" +
+    "        <thead>\r" +
     "\n" +
-    "            <th>Notification</th>\r" +
+    "            <tr>\r" +
     "\n" +
-    "        </tr>\r" +
+    "                <th colspan=\"2\">Notification</th>\r" +
     "\n" +
-    "    </thead>\r" +
+    "            </tr>\r" +
     "\n" +
-    "    <tbody>\r" +
+    "        </thead>\r" +
     "\n" +
-    "        <tr ng-repeat=\"notification in notifications\">\r" +
+    "        <tbody>\r" +
     "\n" +
-    "            <td>\r" +
+    "            <tr ng-repeat=\"notification in notifications\">\r" +
     "\n" +
-    "                {{notification.getMsg()}}\r" +
+    "                <td>\r" +
     "\n" +
-    "            </td>\r" +
+    "                    {{notification.msg}}\r" +
     "\n" +
-    "        </tr>\r" +
+    "                </td>\r" +
     "\n" +
-    "    </tbody>\r" +
+    "                <td>\r" +
     "\n" +
-    "</table>"
+    "                    <button ng-click=\"remove(notification.id)\" type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\r" +
+    "\n" +
+    "                </td>\r" +
+    "\n" +
+    "            </tr>\r" +
+    "\n" +
+    "        </tbody>\r" +
+    "\n" +
+    "    </table>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "<div ng-show=\"notifications.length === 0\">\r" +
+    "\n" +
+    "    No notifications. Better get active!\r" +
+    "\n" +
+    "</div>"
   );
 
 }]);

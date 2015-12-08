@@ -1,21 +1,17 @@
-angular.module('ngNotify').directive('ngNotifyCount', function () {
-    'use strict';
+angular.module('ngNotify').directive('ngNotifyCount', [
+    'ngNotifyMngr',
+    'ngNotifyEvent',
+    function (ngNotifyMngr, ngNotifyEvent) {
+        'use strict';
     
-    return {
-        templateUrl: 'templates/ng-notify/count.html',
-        scope: {
-            badge: '@',
-            hideEmpty: '@'
-        },
-        controller: [
-            '$scope',
-            'ngNotifyMngr',
-            'ngNotifyEvent',
-            function ($scope, ngNotifyMngr, ngNotifyEvent) {
+        return {
+            templateUrl: 'templates/ng-notify/count.html',
+            link: function ($scope, $element, $attrs) {
                 function reset() {
                     $scope.count = ngNotifyMngr.get().length;
-                    
-                    if ($scope.count === 0 && $scope.hideEmpty) {
+                    $scope.badge = ($attrs.badge);
+
+                    if ($scope.count === 0 && $attrs.hideEmpty) {
                         $scope.count = '';
                     }
                 }
@@ -24,6 +20,6 @@ angular.module('ngNotify').directive('ngNotifyCount', function () {
 
                 $scope.$on(ngNotifyEvent.event('change'), reset);
             }
-        ]
-    };
-});
+        };
+    }
+]);
