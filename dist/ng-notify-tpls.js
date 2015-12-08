@@ -47,7 +47,11 @@ angular.module('ngNotify').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <td>\r" +
     "\n" +
-    "                    <button ng-click=\"remove(notification.id)\" type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\r" +
+    "                    <button ng-click=\"remove(notification.id)\" type=\"button\" class=\"close\" aria-label=\"Close\">\r" +
+    "\n" +
+    "                        <span aria-hidden=\"true\">&times;</span>\r" +
+    "\n" +
+    "                    </button>\r" +
     "\n" +
     "                </td>\r" +
     "\n" +
