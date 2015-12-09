@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ng-alerts by mrsteele</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Ng-alerts</h1>
+      <h2 class="project-tagline">An angular extension to house notifications</h2>
+      <a href="https://github.com/mrsteele/ng-alerts" class="btn">View on GitHub</a>
+      <a href="https://github.com/mrsteele/ng-alerts/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/mrsteele/ng-alerts/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="ng-alerts" class="anchor" href="#ng-alerts" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts</h1>
+
+<p>An angular extension to manager front-end notifications and alerts.</p>
+
+<h3>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h3>
+
+<p>I made this plugin in an attempt to manage any and all user-faces notifications and alerts. I wanted it clean, extensible, and scalable.</p>
+
+<h3>
+<a id="prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prerequisites</h3>
+
+<p>Only a few prerequisites to use this plugin (a prereq's prereqs listed as well).</p>
+
+<ul>
+<li>AngularJS</li>
+<li>Angular-UI Bootstrap
+
+<ul>
+<li>Bootstrap</li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<h5>
+<a id="node" class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h5>
+
+<p><code>npn install ng-alerts --save</code></p>
+
+<h5>
+<a id="bower" class="anchor" href="#bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bower</h5>
+
+<p><code>bower install ng-alerts --save</code></p>
+
+<h3>
+<a id="how-does-it-work" class="anchor" href="#how-does-it-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it work?</h3>
+
+<p>ng-alerts is made to be flexible for the benefit of the developer. Mix and match whatever systems you want to achieve whatever you would like!.</p>
+
+<p>If you want to see a quick example, just open <em>/test/index.html</em> and that will let you know what to expect, otherwise read the information below.</p>
+
+<p>First, you must include the module name in your dependencies list.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> testApp <span class="pl-k">=</span> <span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>testApp<span class="pl-pds">'</span></span>, [
+    <span class="pl-s"><span class="pl-pds">'</span>ngAlerts<span class="pl-pds">'</span></span>
+]);</pre></div>
+
+<p>ng-alerts will now be installed for you to use throughout your application. It is recommended you interface through <strong>ngAlertsMngr</strong> to add your alerts.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">testApp</span>.<span class="pl-en">controller</span>(<span class="pl-s"><span class="pl-pds">'</span>TestCtrl<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">$scope</span>, <span class="pl-smi">ngAlertsMngr</span>) {
+    <span class="pl-c1">$scope</span>.<span class="pl-en">createAlert</span> <span class="pl-k">=</span> <span class="pl-k">function</span> () {
+        <span class="pl-smi">ngAlertsMngr</span>.<span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">'</span>testing<span class="pl-pds">'</span></span>);
+    };
+});</pre></div>
+
+<p>Using the <strong>add</strong> function will add a notification and update all directives throughout your application.</p>
+
+<h3>
+<a id="directives" class="anchor" href="#directives" aria-hidden="true"><span class="octicon octicon-link"></span></a>Directives</h3>
+
+<h5>
+<a id="ng-alerts-count" class="anchor" href="#ng-alerts-count" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-count</h5>
+
+<p>Use this to display the current count of notifications.</p>
+
+<ul>
+<li>
+<strong>badge</strong> - Set this attribute to "true" if you want it to take on the appearance of a bade.</li>
+<li>
+<strong>hide-empty</strong> - Set this to "true" if you want to completely remove the text if you have "zero" alerts.</li>
+</ul>
+
+<h5>
+<a id="ng-alerts-list" class="anchor" href="#ng-alerts-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-list</h5>
+
+<p>Displays a list of alerts, with the ability to remove them.</p>
+
+<h5>
+<a id="ng-alerts-popover" class="anchor" href="#ng-alerts-popover" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-popover</h5>
+
+<p>Creates an anchor for displaying <code>ng-alerts-list</code> in a popover.</p>
+
+<ul>
+<li>
+<strong>position</strong> - Set this attribute to define where you want the popover to draw. Accepted values are 'top', 'bottom', 'left' and 'right'. Defaults to 'top'.</li>
+</ul>
+
+<h3>
+<a id="can-i-contribute" class="anchor" href="#can-i-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Can I contribute?</h3>
+
+<p>YES! Pull requests welcome!</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mrsteele/ng-alerts">Ng-alerts</a> is maintained by <a href="https://github.com/mrsteele">mrsteele</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
