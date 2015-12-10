@@ -1,13 +1,13 @@
 # ng-alerts
 An angular extension to manager front-end notifications and alerts.
 
-### About
+## About
+
+LIVE DEMO: http://mrsteele.github.io/ng-alerts/
 
 I made this plugin in an attempt to manage any and all user-faces notifications and alerts. I wanted it clean, extensible, and scalable.
 
-##### LIVE DEMO: http://mrsteele.github.io/ng-alerts/
-
-### Prerequisites
+## Prerequisites
 
 Only a few prerequisites to use this plugin (a prereq's prereqs listed as well).
 
@@ -15,17 +15,21 @@ Only a few prerequisites to use this plugin (a prereq's prereqs listed as well).
 * Angular-UI Bootstrap
     * Bootstrap
 
-### Installation
+## Installation
 
-##### Node
+### Node
 
-```npn install ng-alerts --save```
+```
+npn install ng-alerts --save
+```
 
-##### Bower
+### Bower
 
-```bower install ng-alerts --save```
+```
+bower install ng-alerts --save
+```
 
-### How does it work?
+## Installation
 
 ng-alerts is made to be flexible for the benefit of the developer. Mix and match whatever systems you want to achieve whatever you would like!.
 
@@ -50,25 +54,40 @@ testApp.controller('TestCtrl', function ($scope, ngAlertsMngr) {
 
 Using the **add** function will add a notification and update all directives throughout your application.
 
-### Directives
+## Directives
 
-##### ng-alerts-count
+### ng-alerts-count
 
 Use this to display the current count of notifications.
 
 * **badge** - Set this attribute to "true" if you want it to take on the appearance of a bade.
 * **hide-empty** - Set this to "true" if you want to completely remove the text if you have "zero" alerts.
 
-##### ng-alerts-list
+#### Example
+```html
+<ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count>
+```
+
+### ng-alerts-list
 
 Displays a list of alerts, with the ability to remove them.
 
-##### ng-alerts-popover
+#### Example
+```html
+<ng-alerts-list></ng-alerts-list>
+```
 
-Creates an anchor for displaying ```ng-alerts-list``` in a popover.
+### ng-alerts-popover
+
+Attaches to an element (button, a, etc...) and creates a click handler for displaying ```ng-alerts-list``` in a popover.
 
 * **position** - Set this attribute to define where you want the popover to draw. Accepted values are 'top', 'bottom', 'left' and 'right'. Defaults to 'top'.
 
-### Can I contribute?
+#### Example
+```html
+<button ng-alerts-popover position="left"></button>
+```
+
+## Can I contribute?
 
 YES! Pull requests welcome!
