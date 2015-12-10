@@ -42,10 +42,13 @@
             position: absolute;
             top: 10px;
             right: 10px;
+            width: 100%;
+            text-align: right;
         }
         
         .page-header {
             margin: 0;
+            padding-top: 150px;
         }
         
         .abs {
@@ -59,6 +62,10 @@
             background-color: #a00;
         }
         
+        html, body {
+            font-size: 15px;
+        }
+        
     </style>
     
   </head>
@@ -67,7 +74,7 @@
       <div id="test-area" ng-controller="MainCtrl">
         <button class="btn abs" href="#" ng-alerts-popover position="bottom">Messages<ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count></button>  
         <button class="btn" href="#" ng-click="addAlert()">Create Alert</button> 
-        <p align="right">Test things here ^</p>
+        <p>Test things here ^</p>
       </div>
       <h1 class="project-name">Ng-alerts</h1>
       <h2 class="project-tagline">An angular extension to house notifications</h2>
