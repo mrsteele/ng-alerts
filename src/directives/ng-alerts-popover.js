@@ -29,8 +29,8 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
                     }
 
                     $el.css({
-                        top: top,
-                        left: left
+                        top: top + 'px',
+                        left: left + 'px'
                     });
                 }
 
