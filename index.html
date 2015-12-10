@@ -30,10 +30,14 @@
     <script>
         var testApp = angular.module('testApp', ['ngAlerts']);
         
-        testApp.controller('MainCtrl', function ($scope, ngAlertsMngr) {
+        testApp.controller('MainCtrl', function ($scope, ngAlertsMngr, $timeout) {
             $scope.addAlert = function () {
-                ngAlertsMngr.add('testing');
+                ngAlertsMngr.add('Here is an example alert!');
             };
+            
+            $timeout(function() {
+                $scope.addAlert();
+            }, 1000);
         });
     </script>
       
