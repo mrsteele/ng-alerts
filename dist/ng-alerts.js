@@ -66,7 +66,7 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
             link: function ($scope, $element, $attrs) {
 
                 var position = $attrs.position || 'top',
-                    $el = $compile('<div class="ng-alerts-popover popover fade ' + position + ' in" role="tooltip" id="popover677443" style="top: 25477px; left: 266px; display: block;"><div class="arrow" style="left: 50%;"></div><div class="popover-content"><ng-alerts-list></ng-alerts-list></div></div>')($scope),
+                    $el = $compile('<div class="ng-alerts-popover popover fade ' + position + ' in" role="tooltip" style="display: block;"><div class="arrow" style="left: 50%;"></div><div class="popover-content"><ng-alerts-list></ng-alerts-list></div></div>')($scope),
                     body = angular.element(document).find('body');
                 
                 function hidePopover(e) {
