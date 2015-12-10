@@ -29,8 +29,6 @@ npn install ng-alerts --save
 bower install ng-alerts --save
 ```
 
-## Installation
-
 ng-alerts is made to be flexible for the benefit of the developer. Mix and match whatever systems you want to achieve whatever you would like!.
 
 If you want to see a quick example, just open */test/index.html* and that will let you know what to expect, otherwise read the information below.
