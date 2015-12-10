@@ -3,83 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <title>Ng-alerts by mrsteele</title>
-      
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-      
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  
-  
-    <!-- bootstrap -->
-      
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
-      
-    <script src="ng-alerts/ng-alerts.min.js"></script>
-    <script src="ng-alerts/ng-alerts-tpls.js"></script>
-    <link rel="stylesheet" type="text/css" href="ng-alerts/ng-alerts.min.css"/>
-  
-    <script>
-        var testApp = angular.module('testApp', ['ngAlerts']);
-        
-        testApp.controller('MainCtrl', function ($scope, ngAlertsMngr, $timeout) {
-            $scope.addAlert = function () {
-                ngAlertsMngr.add('Here is an example alert!');
-            };
-            
-            $timeout(function() {
-                $scope.addAlert();
-            }, 1000);
-        });
-    </script>
-      
-    <style>
-        #test-area {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 100%;
-            text-align: right;
-        }
-        
-        .page-header {
-            margin: 0;
-            padding-top: 150px;
-        }
-        
-        .abs {
-            position: relative;
-        }
-        
-        .abs span.badge {
-            position: absolute;
-            top: -0.5em;
-            right: -0.5em;
-            background-color: #a00;
-        }
-        
-        html, body {
-            font-size: 15px;
-        }
-        
-    </style>
-    
   </head>
-  <body ng-app="testApp">
+  <body>
     <section class="page-header">
-      <div id="test-area" ng-controller="MainCtrl">
-        <button class="btn abs" href="#" ng-alerts-popover position="bottom">Messages<ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count></button>  
-        <button class="btn" href="#" ng-click="addAlert()">Create Alert</button> 
-        <p>Test things here ^</p>
-      </div>
       <h1 class="project-name">Ng-alerts</h1>
       <h2 class="project-tagline">An angular extension to house notifications</h2>
       <a href="https://github.com/mrsteele/ng-alerts" class="btn">View on GitHub</a>
@@ -93,13 +24,15 @@
 
 <p>An angular extension to manager front-end notifications and alerts.</p>
 
-<h3>
-<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h3>
+<h2>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h2>
+
+<p>LIVE DEMO: <a href="http://mrsteele.github.io/ng-alerts/">http://mrsteele.github.io/ng-alerts/</a></p>
 
 <p>I made this plugin in an attempt to manage any and all user-faces notifications and alerts. I wanted it clean, extensible, and scalable.</p>
 
-<h3>
-<a id="prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prerequisites</h3>
+<h2>
+<a id="prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prerequisites</h2>
 
 <p>Only a few prerequisites to use this plugin (a prereq's prereqs listed as well).</p>
 
@@ -113,21 +46,20 @@
 </li>
 </ul>
 
-<h3>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
-
-<h5>
-<a id="node" class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h5>
-
-<p><code>npn install ng-alerts --save</code></p>
-
-<h5>
-<a id="bower" class="anchor" href="#bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bower</h5>
-
-<p><code>bower install ng-alerts --save</code></p>
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <h3>
-<a id="how-does-it-work" class="anchor" href="#how-does-it-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does it work?</h3>
+<a id="node" class="anchor" href="#node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node</h3>
+
+<pre><code>npn install ng-alerts --save
+</code></pre>
+
+<h3>
+<a id="bower" class="anchor" href="#bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bower</h3>
+
+<pre><code>bower install ng-alerts --save
+</code></pre>
 
 <p>ng-alerts is made to be flexible for the benefit of the developer. Mix and match whatever systems you want to achieve whatever you would like!.</p>
 
@@ -149,11 +81,11 @@
 
 <p>Using the <strong>add</strong> function will add a notification and update all directives throughout your application.</p>
 
-<h3>
-<a id="directives" class="anchor" href="#directives" aria-hidden="true"><span class="octicon octicon-link"></span></a>Directives</h3>
+<h2>
+<a id="directives" class="anchor" href="#directives" aria-hidden="true"><span class="octicon octicon-link"></span></a>Directives</h2>
 
-<h5>
-<a id="ng-alerts-count" class="anchor" href="#ng-alerts-count" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-count</h5>
+<h3>
+<a id="ng-alerts-count" class="anchor" href="#ng-alerts-count" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-count</h3>
 
 <p>Use this to display the current count of notifications.</p>
 
@@ -164,23 +96,38 @@
 <strong>hide-empty</strong> - Set this to "true" if you want to completely remove the text if you have "zero" alerts.</li>
 </ul>
 
-<h5>
-<a id="ng-alerts-list" class="anchor" href="#ng-alerts-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-list</h5>
+<h4>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">ng</span><span class="pl-e">-alerts-count</span> <span class="pl-e">badge</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">hide-empty</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-alerts-count</span>&gt;</pre></div>
+
+<h3>
+<a id="ng-alerts-list" class="anchor" href="#ng-alerts-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-list</h3>
 
 <p>Displays a list of alerts, with the ability to remove them.</p>
 
-<h5>
-<a id="ng-alerts-popover" class="anchor" href="#ng-alerts-popover" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-popover</h5>
+<h4>
+<a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
 
-<p>Creates an anchor for displaying <code>ng-alerts-list</code> in a popover.</p>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">ng</span><span class="pl-e">-alerts-list</span>&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-alerts-list</span>&gt;</pre></div>
+
+<h3>
+<a id="ng-alerts-popover" class="anchor" href="#ng-alerts-popover" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-popover</h3>
+
+<p>Attaches to an element (button, a, etc...) and creates a click handler for displaying <code>ng-alerts-list</code> in a popover.</p>
 
 <ul>
 <li>
 <strong>position</strong> - Set this attribute to define where you want the popover to draw. Accepted values are 'top', 'bottom', 'left' and 'right'. Defaults to 'top'.</li>
 </ul>
 
-<h3>
-<a id="can-i-contribute" class="anchor" href="#can-i-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Can I contribute?</h3>
+<h4>
+<a id="example-2" class="anchor" href="#example-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">button</span> <span class="pl-e">ng-alerts-popover</span> <span class="pl-e">position</span>=<span class="pl-s"><span class="pl-pds">"</span>left<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">button</span>&gt;</pre></div>
+
+<h2>
+<a id="can-i-contribute" class="anchor" href="#can-i-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Can I contribute?</h2>
 
 <p>YES! Pull requests welcome!</p>
 
