@@ -17,10 +17,6 @@
   "homepage": "https://github.com/mrsteele/ng-alerts",
   "moduleType": [],
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "src"
   ]
 }
