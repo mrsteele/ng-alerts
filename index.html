@@ -8,9 +8,44 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  
+  
+    <!-- bootstrap -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpl.min.js"></script>
+      
+    <script src="ng-alerts/ng-alerts.min.js"></script>
+    <script src="ng-alerts/ng-alerts-tpls.js"></script>
+    <link rel="stylesheet" type="text/css" href="ng-alerts/ng-alerts.min.css"/>
+  
+    <script>
+        var testApp = angular.module('testApp', ['ngAlerts']);
+        
+//        testApp.controller('MainCtrl', function ($scope, ngAlertsMngr) {
+//            $scope.addAlert = function () {
+//                ngAlertsMngr.add('testing');
+//            };
+//        });
+        testApp.controller('MainCtrl', function() {
+            
+        });
+    </script>
+      
+    <style>
+        #test-area {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+    
   </head>
-  <body>
+  <body ng-app="testApp">
     <section class="page-header">
+      <div id="test-area">
+        <button class="btn btn-default" href="#" ng-click="addAlert()">Test</button>  
+      </div>
       <h1 class="project-name">Ng-alerts</h1>
       <h2 class="project-tagline">An angular extension to house notifications</h2>
       <a href="https://github.com/mrsteele/ng-alerts" class="btn">View on GitHub</a>
