@@ -5,6 +5,8 @@ An angular extension to manager front-end notifications and alerts.
 
 I made this plugin in an attempt to manage any and all user-faces notifications and alerts. I wanted it clean, extensible, and scalable.
 
+##### LIVE DEMO: http://mrsteele.github.io/ng-alerts/
+
 ### Prerequisites
 
 Only a few prerequisites to use this plugin (a prereq's prereqs listed as well).
