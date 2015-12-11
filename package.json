@@ -16,14 +16,18 @@
     "notify",
     "notifications",
     "alerts",
-    "alert"
+    "alert",
+    "ngAlerts",
+    "ngAlert",
+    "ng-alerts",
+    "ng-alert"
   ],
   "author": "Matthew Steele",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mrsteele/ng-alerts/issues"
   },
-  "homepage": "https://github.com/mrsteele/ng-alerts#readme",
+  "homepage": "http://mrsteele.github.io/ng-alerts/",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.9",
