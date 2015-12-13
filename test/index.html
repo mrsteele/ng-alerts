@@ -13,8 +13,8 @@
     <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
 
     <!-- ng-grid files-->
-    <link rel="stylesheet" href="../dist/ng-alerts.min.css">
-    <script src="../dist/ng-alerts.min.js"></script>
+    <link rel="stylesheet" href="../dist/ng-alerts.css">
+    <script src="../dist/ng-alerts.js"></script>
     <script src="../dist/ng-alerts-tpls.js"></script>
 
     <!--[if lt IE 9]>
@@ -42,7 +42,7 @@
         <div class="navbar-default">
             <div class="container">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="t" href="#" ng-alerts-popover position="bottom"><ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count> messages</a></li>
+                    <li><a class="t" href="#" ng-alerts-popover empty-text="Nothing here..." position="bottom"><ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count> messages</a></li>
                     <li><a href="#" ng-click="createAlert()">Create alert</a></li>
                 </ul>
             </div>

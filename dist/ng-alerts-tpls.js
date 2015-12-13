@@ -52,7 +52,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "\n" +
     "<div ng-show=\"alerts.length === 0\">\r" +
     "\n" +
-    "    No messages. Better get active!\r" +
+    "    {{emptyList}}\r" +
     "\n" +
     "</div>"
   );

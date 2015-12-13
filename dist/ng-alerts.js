@@ -1,7 +1,8 @@
-/*! ng-alerts 2015-12-09 */
+/*! ng-alerts 2015-12-13 */
 'use strict';
 
 var app = angular.module('ngAlerts', [])
+
     .run(['$compile', '$rootScope', function ($compile, $rootScope) {
         angular.element(document).find('body').append('<ng-alerts-queue></ng-alerts-queue>');
     }]);
@@ -39,7 +40,7 @@ angular.module('ngAlerts').directive('ngAlertsList', [
 
         return {
             templateUrl: 'templates/ng-alerts/list.html',
-            link: function ($scope) {
+            link: function ($scope, $element, $attrs) {
                 function reset() {
                     $scope.alerts = ngAlertsMngr.get();
                 }
@@ -49,6 +50,8 @@ angular.module('ngAlerts').directive('ngAlertsList', [
                 };
 
                 $scope.$on(ngAlertsEvent.event('change'), reset);
+                
+                $scope.emptyList = $attrs.emptyText || 'No messages. Better get active!';
 
                 reset();
             }
@@ -66,7 +69,8 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
             link: function ($scope, $element, $attrs) {
 
                 var position = $attrs.position || 'top',
-                    $el = $compile('<div class="ng-alerts-popover popover fade ' + position + ' in" role="tooltip" style="display: block;"><div class="arrow" style="left: 50%;"></div><div class="popover-content"><ng-alerts-list></ng-alerts-list></div></div>')($scope),
+                    emptyText = ($attrs.emptyText) ? ' empty-text="' + $attrs.emptyText + '"' : '',
+                    $el = $compile('<div class="ng-alerts-popover popover fade ' + position + ' in" role="tooltip" style="display: block;"><div class="arrow" style="left: 50%;"></div><div class="popover-content"><ng-alerts-list' + emptyText + '></ng-alerts-list></div></div>')($scope),
                     body = angular.element(document).find('body');
                 
                 function hidePopover(e) {

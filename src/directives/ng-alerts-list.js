@@ -6,7 +6,7 @@ angular.module('ngAlerts').directive('ngAlertsList', [
 
         return {
             templateUrl: 'templates/ng-alerts/list.html',
-            link: function ($scope) {
+            link: function ($scope, $element, $attrs) {
                 function reset() {
                     $scope.alerts = ngAlertsMngr.get();
                 }
@@ -16,6 +16,8 @@ angular.module('ngAlerts').directive('ngAlertsList', [
                 };
 
                 $scope.$on(ngAlertsEvent.event('change'), reset);
+                
+                $scope.emptyList = $attrs.emptyText || 'No messages. Better get active!';
 
                 reset();
             }
