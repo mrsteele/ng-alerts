@@ -1,7 +1,7 @@
-/*! ng-alerts 2015-12-13 */
+/*! ng-alerts 2015-12-14 */
 'use strict';
 
-var app = angular.module('ngAlerts', [])
+var app = angular.module('ngAlerts', ['ui.bootstrap'])
 
     .run(['$compile', '$rootScope', function ($compile, $rootScope) {
         angular.element(document).find('body').append('<ng-alerts-queue></ng-alerts-queue>');
