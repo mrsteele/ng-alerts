@@ -8,10 +8,11 @@
     
     <!-- dependencies -->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.css">
     <script src="../node_modules/angular/angular.min.js"></script>
-    <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
-    <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../node_modules/angular-animate/angular-animate.js"></script>
+    <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap.js"></script>
+    <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.js"></script>
 
     <!-- ng-grid files-->
     <link rel="stylesheet" href="../dist/ng-alerts.css">
@@ -62,6 +63,14 @@
                 </div>
             </div>
         </div>
+        
+        <!-- DEBUG -->
+        <script type="text/ng-template" id="myPopoverTemplate.html">
+      <div ng-repeat="i in [1, 2, 3, 4]">Hello World!</div>
+    </script>
+        <center>
+        <button position="bottom" uib-popover-template="myPopoverTemplate.html">test</button>
+        </center>
         
         
     </div>

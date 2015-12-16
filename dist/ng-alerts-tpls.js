@@ -8,51 +8,55 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('templates/ng-alerts/list.html',
-    "<div ng-show=\"alerts.length > 0\">\r" +
+    "<div>\r" +
     "\n" +
-    "    <table class=\"table table-hover table-condensed\">\r" +
+    "    <div ng-show=\"alerts.length > 0\">\r" +
     "\n" +
-    "        <thead>\r" +
+    "        <table class=\"table table-hover table-condensed\">\r" +
     "\n" +
-    "            <tr>\r" +
+    "            <thead>\r" +
     "\n" +
-    "                <th colspan=\"2\">Message</th>\r" +
+    "                <tr>\r" +
     "\n" +
-    "            </tr>\r" +
+    "                    <th colspan=\"2\">Message</th>\r" +
     "\n" +
-    "        </thead>\r" +
+    "                </tr>\r" +
     "\n" +
-    "        <tbody>\r" +
+    "            </thead>\r" +
     "\n" +
-    "            <tr ng-repeat=\"alert in alerts\">\r" +
+    "            <tbody>\r" +
     "\n" +
-    "                <td>\r" +
+    "                <tr ng-repeat=\"alert in alerts\">\r" +
     "\n" +
-    "                    {{alert.msg}}\r" +
+    "                    <td>\r" +
     "\n" +
-    "                </td>\r" +
+    "                        {{alert.msg}}\r" +
     "\n" +
-    "                <td>\r" +
+    "                    </td>\r" +
     "\n" +
-    "                    <button ng-click=\"remove(alert.id)\" type=\"button\" class=\"close\" aria-label=\"Close\">\r" +
+    "                    <td>\r" +
     "\n" +
-    "                        <span aria-hidden=\"true\">&times;</span>\r" +
+    "                        <button ng-click=\"remove(alert.id)\" type=\"button\" class=\"close\" aria-label=\"Close\">\r" +
     "\n" +
-    "                    </button>\r" +
+    "                            <span aria-hidden=\"true\">&times;</span>\r" +
     "\n" +
-    "                </td>\r" +
+    "                        </button>\r" +
     "\n" +
-    "            </tr>\r" +
+    "                    </td>\r" +
     "\n" +
-    "        </tbody>\r" +
+    "                </tr>\r" +
     "\n" +
-    "    </table>\r" +
+    "            </tbody>\r" +
     "\n" +
-    "</div>\r" +
+    "        </table>\r" +
     "\n" +
-    "<div ng-show=\"alerts.length === 0\">\r" +
+    "    </div>\r" +
     "\n" +
-    "    {{emptyList}}\r" +
+    "    <div ng-show=\"alerts.length === 0\">\r" +
+    "\n" +
+    "        {{emptyList}}\r" +
+    "\n" +
+    "    </div>\r" +
     "\n" +
     "</div>"
   );
@@ -68,6 +72,11 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "    </div>\r" +
     "\n" +
     "</div>"
+  );
+
+
+  $templateCache.put('templates/ng-alerts/sub/popover-list.html',
+    "<div>Test 1</div>"
   );
 
 }]);
