@@ -65,7 +65,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
   $templateCache.put('templates/ng-alerts/queue.html',
     "<div id=\"ng-alerts-queue\" class=\"{{location}}\">\r" +
     "\n" +
-    "    <uib-alert ng-repeat=\"alert in alerts\" type=\"warning\" close=\"delete(alert.id)\">\r" +
+    "    <uib-alert ng-repeat=\"alert in alerts\" type=\"warning\" close=\"remove(alert.id)\">\r" +
     "\n" +
     "        {{alert.msg}}\r" +
     "\n" +

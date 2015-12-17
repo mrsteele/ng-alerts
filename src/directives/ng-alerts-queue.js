@@ -23,7 +23,7 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                 
                 $scope.location = ngAlerts.options.queueLocation;
                 
-                $scope.delete = function (id) {
+                $scope.remove = function (id) {
                     ngAlertsMngr.remove(id);
                 };
 
