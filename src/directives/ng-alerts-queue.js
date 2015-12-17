@@ -2,7 +2,8 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
     'ngAlertsMngr',
     'ngAlertsEvent',
     '$timeout',
-    function (ngAlertsMngr, ngAlertsEvent, $timeout) {
+    'ngAlerts',
+    function (ngAlertsMngr, ngAlertsEvent, $timeout, ngAlerts) {
         'use strict';
 
         return {
@@ -20,6 +21,8 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                     }
                 }
                 
+                $scope.location = ngAlerts.options.queueLocation;
+                
                 $scope.delete = function (id) {
                     ngAlertsMngr.remove(id);
                 };
@@ -32,7 +35,7 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                     $scope.alerts.push(alert);
                     $timeout(function () {
                         remove(alert.id);
-                    }, 3000);
+                    }, ngAlerts.options.queueTimeout);
                 });
             }
         };

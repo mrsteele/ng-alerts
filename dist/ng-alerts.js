@@ -1,7 +1,21 @@
 /*! ng-alerts 2015-12-17 */
 'use strict';
 
-var app = angular.module('ngAlerts', ['ui.bootstrap'])
+angular.module('ngAlerts', ['ui.bootstrap'])
+    
+    .provider('ngAlerts', function () {
+        
+        // defaults
+        this.options = {
+            emptyListText: 'No messages. Better get active!',
+            queueTimeout: 3000,
+            queueLocation: 'bottom right'
+        };
+        
+        this.$get = function() {
+            return this;
+        }
+    })
 
     .run(['$compile', '$rootScope', function ($compile, $rootScope) {
         angular.element(document).find('body').append('<ng-alerts-queue></ng-alerts-queue>');
@@ -35,7 +49,8 @@ angular.module('ngAlerts').directive('ngAlertsCount', [
 angular.module('ngAlerts').directive('ngAlertsList', [
     'ngAlertsMngr',
     'ngAlertsEvent',
-    function (ngAlertsMngr, ngAlertsEvent) {
+    'ngAlerts',
+    function (ngAlertsMngr, ngAlertsEvent, ngAlerts) {
         'use strict';
 
         return {
@@ -51,7 +66,7 @@ angular.module('ngAlerts').directive('ngAlertsList', [
 
                 $scope.$on(ngAlertsEvent.event('change'), reset);
                 
-                $scope.emptyList = $attrs.emptyText || 'No messages. Better get active!';
+                $scope.emptyList = $attrs.emptyText || ngAlerts.options.emptyListText;
 
                 reset();
             }
@@ -94,7 +109,8 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
     'ngAlertsMngr',
     'ngAlertsEvent',
     '$timeout',
-    function (ngAlertsMngr, ngAlertsEvent, $timeout) {
+    'ngAlerts',
+    function (ngAlertsMngr, ngAlertsEvent, $timeout, ngAlerts) {
         'use strict';
 
         return {
@@ -112,6 +128,8 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                     }
                 }
                 
+                $scope.location = ngAlerts.options.queueLocation;
+                
                 $scope.delete = function (id) {
                     ngAlertsMngr.remove(id);
                 };
@@ -124,7 +142,7 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                     $scope.alerts.push(alert);
                     $timeout(function () {
                         remove(alert.id);
-                    }, 3000);
+                    }, ngAlerts.options.queueTimeout);
                 });
             }
         };

@@ -1,7 +1,8 @@
 angular.module('ngAlerts').directive('ngAlertsList', [
     'ngAlertsMngr',
     'ngAlertsEvent',
-    function (ngAlertsMngr, ngAlertsEvent) {
+    'ngAlerts',
+    function (ngAlertsMngr, ngAlertsEvent, ngAlerts) {
         'use strict';
 
         return {
@@ -17,7 +18,7 @@ angular.module('ngAlerts').directive('ngAlertsList', [
 
                 $scope.$on(ngAlertsEvent.event('change'), reset);
                 
-                $scope.emptyList = $attrs.emptyText || 'No messages. Better get active!';
+                $scope.emptyList = $attrs.emptyText || ngAlerts.options.emptyListText;
 
                 reset();
             }

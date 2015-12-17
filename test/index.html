@@ -33,6 +33,11 @@
             'ngAlerts'
         ]);
         
+        testApp.config(['ngAlertsProvider', function (ngAlertsProvider) {
+            ngAlertsProvider.options.emptyListText = 'Nothing here...';
+            ngAlertsProvider.options.queueTimeout = 5000;
+        }]);
+        
         testApp.controller('TestCtrl', ['$scope', 'ngAlertsMngr', function ($scope, ngAlertsMngr) {
             $scope.createAlert = function () {
                 ngAlertsMngr.add('testing');
@@ -52,7 +57,7 @@
             <div class="container">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="t" href="#" ng-alerts-popover empty-text="Nothing here..." popover-placement="bottom">
+                        <a class="t" href="#" ng-alerts-popover popover-placement="bottom">
                             <ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count> messages
                         </a>
                     </li>

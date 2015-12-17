@@ -1,10 +1,21 @@
 #ng-alerts-queue {
   position: fixed;
-  bottom: 0;
-  right: 0;
   padding: 0 10px;
+  margin-top: 20px;
   width: 480px;
   max-width: 100%;
+}
+#ng-alerts-queue.bottom {
+  bottom: 0;
+}
+#ng-alerts-queue.right {
+  right: 0;
+}
+#ng-alerts-queue.top {
+  top: 0;
+}
+#ng-alerts-queue.left {
+  left: 0;
 }
 .ng-alerts-popover {
   max-width: 100%;
