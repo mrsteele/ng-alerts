@@ -76,7 +76,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('templates/ng-alerts/sub/popover-list.html',
-    "<div>Test 1</div>"
+    "<ng-alerts-list></ng-alerts-list>"
   );
 
 }]);
