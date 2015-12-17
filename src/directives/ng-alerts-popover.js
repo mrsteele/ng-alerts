@@ -21,6 +21,7 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
 //                }
                 
                 $scope.templateUrl = 'templates/ng-alerts/sub/popover-list.html';
+                $scope.emptyText = $attrs.emptyText;
                 
                 $compile($element)($scope);
                 

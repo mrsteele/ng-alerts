@@ -1,4 +1,4 @@
-/*! ng-alerts 2015-12-16 */
+/*! ng-alerts 2015-12-17 */
 'use strict';
 
 var app = angular.module('ngAlerts', ['ui.bootstrap'])
@@ -82,6 +82,7 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
 //                }
                 
                 $scope.templateUrl = 'templates/ng-alerts/sub/popover-list.html';
+                $scope.emptyText = $attrs.emptyText;
                 
                 $compile($element)($scope);
                 
