@@ -45,7 +45,22 @@ var testApp = angular.module('testApp', [
 ]);
 ```
 
-ng-alerts will now be installed for you to use throughout your application. It is recommended you interface through **ngAlertsMngr** to add your alerts.
+ng-alerts will now be installed for you to use throughout your application. You can configure a few defaults of the application with the provider.
+
+```javascript
+testApp.config(['ngAlertsProvider', function (ngAlertsProvider) {
+    // Global empty list text.
+    ngAlertsProvider.options.emptyListText = 'Nothing here...';
+    
+    // The queue timeout for new alerts.
+    ngAlertsProvider.options.queueTimeout = 3000;
+    
+    // The queue location (top||bottom, left||right).
+    ngAlertsProvider.options.queueLocation = 'bottom left';
+}]);
+```
+
+It is recommended you interface through **ngAlertsMngr** to add your alerts.
 ```javascript
 testApp.controller('TestCtrl', function ($scope, ngAlertsMngr) {
     $scope.createAlert = function () {
@@ -73,21 +88,20 @@ Use this to display the current count of notifications.
 ### ng-alerts-list
 
 Displays a list of alerts, with the ability to remove them.
+* **empty-text** - Overrides the default empty list text.
 
 #### Example
 ```html
-<ng-alerts-list></ng-alerts-list>
+<ng-alerts-list empty-text="No alerts available"></ng-alerts-list>
 ```
 
 ### ng-alerts-popover
 
-Attaches to an element (button, a, etc...) and creates a click handler for displaying ```ng-alerts-list``` in a popover.
-
-* **position** - Set this attribute to define where you want the popover to draw. Accepted values are 'top', 'bottom', 'left' and 'right'. Defaults to 'top'.
+Attaches to an element (button, a, etc...) and creates a click handler for displaying ```ng-alerts-list``` in a popover. This one uses the backbone popover directive, so all popover attributes are applicable. See https://angular-ui.github.io/bootstrap/#/popover.
 
 #### Example
 ```html
-<button ng-alerts-popover position="left"></button>
+<button ng-alerts-popover popover-placement="left"></button>
 ```
 
 ## Can I contribute?
