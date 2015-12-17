@@ -8,7 +8,6 @@
     
     <!-- JS: Dependencies -->
     <script src="../node_modules/angular/angular.js"></script>
-    <script src="../node_modules/angular-animate/angular-animate.js"></script>
     <script src="../node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.js"></script>
     
     <!-- JS: ng-alerts -->
@@ -31,8 +30,7 @@
     <script>
         var testApp = angular.module('testApp', [
             'ui.bootstrap',
-            'ngAlerts',
-            'ngAnimate'
+            'ngAlerts'
         ]);
         
         testApp.controller('TestCtrl', ['$scope', 'ngAlertsMngr', function ($scope, ngAlertsMngr) {

@@ -1,7 +1,7 @@
 /*! ng-alerts 2015-12-16 */
 'use strict';
 
-var app = angular.module('ngAlerts', ['ngAnimate', 'ui.bootstrap'])
+var app = angular.module('ngAlerts', ['ui.bootstrap'])
 
     .run(['$compile', '$rootScope', function ($compile, $rootScope) {
         angular.element(document).find('body').append('<ng-alerts-queue></ng-alerts-queue>');
@@ -76,6 +76,11 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
                 $element.attr('uib-popover-template', 'templateUrl');
                 $element.removeAttr('ng-alerts-popover');
                 
+                // Ready with 1.0 release
+//                if (!$attrs.popoverTrigger) {
+//                    $element.attr('popover-trigger', 'outsideClick');
+//                }
+                
                 $scope.templateUrl = 'templates/ng-alerts/sub/popover-list.html';
                 
                 $compile($element)($scope);
@@ -105,6 +110,10 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                         }
                     }
                 }
+                
+                $scope.delete = function (id) {
+                    ngAlertsMngr.remove(id);
+                };
 
                 $scope.$on(ngAlertsEvent.event('remove'), function (e, id) {
                     remove(id);

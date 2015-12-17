@@ -15,6 +15,11 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
                 $element.attr('uib-popover-template', 'templateUrl');
                 $element.removeAttr('ng-alerts-popover');
                 
+                // Ready with 1.0 release
+//                if (!$attrs.popoverTrigger) {
+//                    $element.attr('popover-trigger', 'outsideClick');
+//                }
+                
                 $scope.templateUrl = 'templates/ng-alerts/sub/popover-list.html';
                 
                 $compile($element)($scope);

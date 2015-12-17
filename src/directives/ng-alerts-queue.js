@@ -19,6 +19,10 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                         }
                     }
                 }
+                
+                $scope.delete = function (id) {
+                    ngAlertsMngr.remove(id);
+                };
 
                 $scope.$on(ngAlertsEvent.event('remove'), function (e, id) {
                     remove(id);
