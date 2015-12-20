@@ -60,11 +60,11 @@ testApp.config(['ngAlertsProvider', function (ngAlertsProvider) {
 }]);
 ```
 
-It is recommended you interface through **ngAlertsMngr** to add your alerts.
+It is recommended you interface through **ngAlertsMngr** to add your alerts. Use the *add* function to add an alert. The first argument is the message, and the seciond one (optional) is the type (defaults to "warning" but any of the bootstrap types are valid).
 ```javascript
 testApp.controller('TestCtrl', function ($scope, ngAlertsMngr) {
     $scope.createAlert = function () {
-        ngAlertsMngr.add('testing');
+        ngAlertsMngr.add('testing', 'warning');
     };
 });
 ```
