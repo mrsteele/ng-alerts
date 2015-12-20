@@ -36,7 +36,7 @@ module.exports = function (grunt) {
                     sourceMap: true
                 },
                 files: {
-                    'dist/ng-alerts.min.js': ['src/ng-alerts.js', 'src/**/*.js']
+                    'dist/ng-alerts.min.js': ['dist/ng-alerts.js']
                 }
             }
         },
@@ -65,12 +65,13 @@ module.exports = function (grunt) {
         ngtemplates: {
             ngAlerts: {
                 src: '**/*.html',
-                dest: 'dist/ng-alerts-tpls.js',
+                dest: 'dist/ng-alerts.js',
                 cwd: 'src/tpls/',
                 options:  {
                     url: function (url) {
                         return 'templates/ng-alerts/' + url;
-                    }
+                    },
+                    append: true
                 }
             }
         },
@@ -113,8 +114,8 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'clean',
         'concat',
-        'uglify',
         'ngtemplates',
+        'uglify',
         'less'
     ]);
     
