@@ -20,6 +20,9 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
 //                    $element.attr('popover-trigger', 'outsideClick');
 //                }
                 
+                // Custom classes not available yet
+                //$element.attr('popover-class', 'ng-alerts-popover-list');
+                
                 $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;
                 
