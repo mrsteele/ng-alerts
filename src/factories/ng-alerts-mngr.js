@@ -22,13 +22,13 @@ angular.module('ngAlerts').factory('ngAlertsMngr', [
             fire('reset');
         };
 
-        mngr.add = function (msg) {
+        mngr.add = function (msg, type) {
             var i, ids = [];
             for (i = 0; i < alerts.length; i += 1) {
                 ids.push(alerts[i].id);
             }
 
-            i = alerts.push(new NgAlert(ngAlertsId.create(ids), msg));
+            i = alerts.push(new NgAlert(ngAlertsId.create(ids), msg, type));
             fire('add', alerts[i - 1]);
         };
 

@@ -28,6 +28,12 @@
 <body ng-app="testApp">
     
     <script>
+        var randoms = [
+            'success',
+            'warning',
+            'danger',
+            'info'
+        ];
         var testApp = angular.module('testApp', [
             'ui.bootstrap',
             'ngAlerts'
@@ -40,7 +46,10 @@
         
         testApp.controller('TestCtrl', ['$scope', 'ngAlertsMngr', function ($scope, ngAlertsMngr) {
             $scope.createAlert = function () {
-                ngAlertsMngr.add('testing');
+                var type = randoms[Math.round(Math.random() * (randoms.length - 1))];
+                
+                
+                ngAlertsMngr.add('Adding a "' + type + '" alert.', type);
             };
         }]);
         

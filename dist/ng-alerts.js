@@ -156,9 +156,10 @@ angular.module('ngAlerts').factory('NgAlert', [
     function (ngAlertsId) {
         'use strict';
 
-        var NgAlert = function (id, msg) {
+        var NgAlert = function (id, msg, type) {
             this.id = id || ngAlertsId.create();
             this.msg = msg || '';
+            this.type = type || 'warning';
         };
 
         return NgAlert;
@@ -211,13 +212,13 @@ angular.module('ngAlerts').factory('ngAlertsMngr', [
             fire('reset');
         };
 
-        mngr.add = function (msg) {
+        mngr.add = function (msg, type) {
             var i, ids = [];
             for (i = 0; i < alerts.length; i += 1) {
                 ids.push(alerts[i].id);
             }
 
-            i = alerts.push(new NgAlert(ngAlertsId.create(ids), msg));
+            i = alerts.push(new NgAlert(ngAlertsId.create(ids), msg, type));
             fire('add', alerts[i - 1]);
         };
 
@@ -278,7 +279,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <tbody>\r" +
     "\n" +
-    "                <tr ng-repeat=\"alert in alerts\">\r" +
+    "                <tr ng-repeat=\"alert in alerts\" class=\"{{alert.type}}\">\r" +
     "\n" +
     "                    <td>\r" +
     "\n" +
@@ -317,7 +318,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
   $templateCache.put('template/ng-alerts/queue.html',
     "<div id=\"ng-alerts-queue\" class=\"{{location}}\">\r" +
     "\n" +
-    "    <uib-alert ng-repeat=\"alert in alerts\" type=\"warning\" close=\"remove(alert.id)\">\r" +
+    "    <uib-alert ng-repeat=\"alert in alerts\" type=\"{{alert.type}}\" close=\"remove(alert.id)\">\r" +
     "\n" +
     "        {{alert.msg}}\r" +
     "\n" +

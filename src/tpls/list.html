@@ -7,7 +7,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="alert in alerts">
+                <tr ng-repeat="alert in alerts" class="{{alert.type}}">
                     <td>
                         {{alert.msg}}
                     </td>
