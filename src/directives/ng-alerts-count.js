@@ -5,7 +5,7 @@ angular.module('ngAlerts').directive('ngAlertsCount', [
         'use strict';
     
         return {
-            templateUrl: 'templates/ng-alerts/count.html',
+            templateUrl: 'template/ng-alerts/count.html',
             link: function ($scope, $element, $attrs) {
                 function reset() {
                     $scope.count = ngAlertsMngr.get().length;

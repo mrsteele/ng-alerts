@@ -6,7 +6,7 @@ angular.module('ngAlerts').directive('ngAlertsList', [
         'use strict';
 
         return {
-            templateUrl: 'templates/ng-alerts/list.html',
+            templateUrl: 'template/ng-alerts/list.html',
             link: function ($scope, $element, $attrs) {
                 function reset() {
                     $scope.alerts = ngAlertsMngr.get();

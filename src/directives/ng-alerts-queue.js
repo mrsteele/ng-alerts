@@ -7,7 +7,7 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
         'use strict';
 
         return {
-            templateUrl: 'templates/ng-alerts/queue.html',
+            templateUrl: 'template/ng-alerts/queue.html',
             link: function ($scope) {
                 $scope.alerts = [];
 

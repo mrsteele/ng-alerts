@@ -69,7 +69,7 @@ module.exports = function (grunt) {
                 cwd: 'src/tpls/',
                 options:  {
                     url: function (url) {
-                        return 'templates/ng-alerts/' + url;
+                        return 'template/ng-alerts/' + url;
                     },
                     append: true
                 }

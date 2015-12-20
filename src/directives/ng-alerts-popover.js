@@ -20,7 +20,7 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
 //                    $element.attr('popover-trigger', 'outsideClick');
 //                }
                 
-                $scope.templateUrl = 'templates/ng-alerts/sub/popover-list.html';
+                $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;
                 
                 $compile($element)($scope);

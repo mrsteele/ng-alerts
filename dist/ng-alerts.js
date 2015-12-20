@@ -28,7 +28,7 @@ angular.module('ngAlerts').directive('ngAlertsCount', [
         'use strict';
     
         return {
-            templateUrl: 'templates/ng-alerts/count.html',
+            templateUrl: 'template/ng-alerts/count.html',
             link: function ($scope, $element, $attrs) {
                 function reset() {
                     $scope.count = ngAlertsMngr.get().length;
@@ -54,7 +54,7 @@ angular.module('ngAlerts').directive('ngAlertsList', [
         'use strict';
 
         return {
-            templateUrl: 'templates/ng-alerts/list.html',
+            templateUrl: 'template/ng-alerts/list.html',
             link: function ($scope, $element, $attrs) {
                 function reset() {
                     $scope.alerts = ngAlertsMngr.get();
@@ -96,7 +96,7 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
 //                    $element.attr('popover-trigger', 'outsideClick');
 //                }
                 
-                $scope.templateUrl = 'templates/ng-alerts/sub/popover-list.html';
+                $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;
                 
                 $compile($element)($scope);
@@ -114,7 +114,7 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
         'use strict';
 
         return {
-            templateUrl: 'templates/ng-alerts/queue.html',
+            templateUrl: 'template/ng-alerts/queue.html',
             link: function ($scope) {
                 $scope.alerts = [];
 
@@ -250,13 +250,13 @@ angular.module('ngAlerts').service('ngAlertsEvent', [
 angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/ng-alerts/count.html',
+  $templateCache.put('template/ng-alerts/count.html',
     "<span ng-class=\"{'badge': badge}\">{{count}}</span>\r" +
     "\n"
   );
 
 
-  $templateCache.put('templates/ng-alerts/list.html',
+  $templateCache.put('template/ng-alerts/list.html',
     "<div>\r" +
     "\n" +
     "    <div ng-show=\"alerts.length > 0\">\r" +
@@ -311,7 +311,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('templates/ng-alerts/queue.html',
+  $templateCache.put('template/ng-alerts/queue.html',
     "<div id=\"ng-alerts-queue\" class=\"{{location}}\">\r" +
     "\n" +
     "    <uib-alert ng-repeat=\"alert in alerts\" type=\"warning\" close=\"remove(alert.id)\">\r" +
@@ -324,7 +324,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('templates/ng-alerts/sub/popover-list.html',
+  $templateCache.put('template/ng-alerts/sub/popover-list.html',
     "<ng-alerts-list empty-text=\"{{emptyText}}\"></ng-alerts-list>"
   );
 
