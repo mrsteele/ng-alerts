@@ -8,71 +8,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
-      
-    <script src="ng-alerts/ng-alerts.min.js"></script>
-    <script src="ng-alerts/ng-alerts-tpls.js"></script>
-    <link rel="stylesheet" type="text/css" href="ng-alerts/ng-alerts.min.css"/>
-  
-    <script>
-        var testApp = angular.module('testApp', ['ngAlerts']);
-        
-        testApp.controller('MainCtrl', function ($scope, ngAlertsMngr, $timeout) {
-            $scope.addAlert = function () {
-                ngAlertsMngr.add('Here is an example alert!');
-            };
-            
-            $timeout(function() {
-                $scope.addAlert();
-            }, 1000);
-        });
-    </script>
-      
-    <style>
-        #test-area {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 100%;
-            text-align: right;
-        }
-        
-        .page-header {
-            margin: 0;
-            padding-top: 150px;
-            padding-bottom: 50px;
-        }
-        
-        .abs {
-            position: relative;
-        }
-        
-        .abs span.badge {
-            position: absolute;
-            top: -0.5em;
-            right: -0.5em;
-            background-color: #a00;
-        }
-        
-        html, body {
-            font-size: 15px;
-        }
-        
-    </style>
-    
   </head>
-  <body ng-app="testApp">
+  <body>
     <section class="page-header">
-      <div id="test-area" ng-controller="MainCtrl">
-        <button class="btn abs" href="#" ng-alerts-popover position="bottom">Messages<ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count></button>  
-        <button class="btn" href="#" ng-click="addAlert()">Create Alert</button> 
-        <p>Test things here ^</p>
-      </div>
       <h1 class="project-name">Ng-alerts</h1>
       <h2 class="project-tagline">An angular extension to house notifications</h2>
       <a href="https://github.com/mrsteele/ng-alerts" class="btn">View on GitHub</a>
