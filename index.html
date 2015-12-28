@@ -22,6 +22,9 @@
       <h1>
 <a id="ng-alerts" class="anchor" href="#ng-alerts" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts</h1>
 
+<p><a href="https://david-dm.org/angular-ui/bootstrap#info=dependencies"><img src="https://david-dm.org/mrsteele/ng-alerts.svg" alt="dependency Status"></a>
+<a href="https://david-dm.org/angular-ui/bootstrap#info=devDependencies"><img src="https://david-dm.org/mrsteele/ng-alerts/dev-status.svg" alt="devDependency Status"></a></p>
+
 <p>An angular extension to manager front-end notifications and alerts.</p>
 
 <h2>
@@ -71,11 +74,24 @@
     <span class="pl-s"><span class="pl-pds">'</span>ngAlerts<span class="pl-pds">'</span></span>
 ]);</pre></div>
 
-<p>ng-alerts will now be installed for you to use throughout your application. It is recommended you interface through <strong>ngAlertsMngr</strong> to add your alerts.</p>
+<p>ng-alerts will now be installed for you to use throughout your application. You can configure a few defaults of the application with the provider.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">testApp</span>.<span class="pl-en">config</span>([<span class="pl-s"><span class="pl-pds">'</span>ngAlertsProvider<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">ngAlertsProvider</span>) {
+    <span class="pl-c">// Global empty list text.</span>
+    <span class="pl-smi">ngAlertsProvider</span>.<span class="pl-c1">options</span>.<span class="pl-smi">emptyListText</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Nothing here...<span class="pl-pds">'</span></span>;
+
+    <span class="pl-c">// The queue timeout for new alerts.</span>
+    <span class="pl-smi">ngAlertsProvider</span>.<span class="pl-c1">options</span>.<span class="pl-smi">queueTimeout</span> <span class="pl-k">=</span> <span class="pl-c1">3000</span>;
+
+    <span class="pl-c">// The queue location (top||bottom, left||right).</span>
+    <span class="pl-smi">ngAlertsProvider</span>.<span class="pl-c1">options</span>.<span class="pl-smi">queueLocation</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>bottom left<span class="pl-pds">'</span></span>;
+}]);</pre></div>
+
+<p>It is recommended you interface through <strong>ngAlertsMngr</strong> to add your alerts. Use the <em>add</em> function to add an alert. The first argument is the message, and the seciond one (optional) is the type (defaults to "warning" but any of the bootstrap types are valid).</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-smi">testApp</span>.<span class="pl-en">controller</span>(<span class="pl-s"><span class="pl-pds">'</span>TestCtrl<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">$scope</span>, <span class="pl-smi">ngAlertsMngr</span>) {
     <span class="pl-c1">$scope</span>.<span class="pl-en">createAlert</span> <span class="pl-k">=</span> <span class="pl-k">function</span> () {
-        <span class="pl-smi">ngAlertsMngr</span>.<span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">'</span>testing<span class="pl-pds">'</span></span>);
+        <span class="pl-smi">ngAlertsMngr</span>.<span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">'</span>testing<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>warning<span class="pl-pds">'</span></span>);
     };
 });</pre></div>
 
@@ -106,25 +122,25 @@
 
 <p>Displays a list of alerts, with the ability to remove them.</p>
 
+<ul>
+<li>
+<strong>empty-text</strong> - Overrides the default empty list text.</li>
+</ul>
+
 <h4>
 <a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
 
-<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">ng</span><span class="pl-e">-alerts-list</span>&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-alerts-list</span>&gt;</pre></div>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">ng</span><span class="pl-e">-alerts-list</span> <span class="pl-e">empty-text</span>=<span class="pl-s"><span class="pl-pds">"</span>No alerts available<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-alerts-list</span>&gt;</pre></div>
 
 <h3>
 <a id="ng-alerts-popover" class="anchor" href="#ng-alerts-popover" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-alerts-popover</h3>
 
-<p>Attaches to an element (button, a, etc...) and creates a click handler for displaying <code>ng-alerts-list</code> in a popover.</p>
-
-<ul>
-<li>
-<strong>position</strong> - Set this attribute to define where you want the popover to draw. Accepted values are 'top', 'bottom', 'left' and 'right'. Defaults to 'top'.</li>
-</ul>
+<p>Attaches to an element (button, a, etc...) and creates a click handler for displaying <code>ng-alerts-list</code> in a popover. This one uses the backbone popover directive, so all popover attributes are applicable. See <a href="https://angular-ui.github.io/bootstrap/#/popover">https://angular-ui.github.io/bootstrap/#/popover</a>.</p>
 
 <h4>
 <a id="example-2" class="anchor" href="#example-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h4>
 
-<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">button</span> <span class="pl-e">ng-alerts-popover</span> <span class="pl-e">position</span>=<span class="pl-s"><span class="pl-pds">"</span>left<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">button</span>&gt;</pre></div>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">button</span> <span class="pl-e">ng-alerts-popover</span> <span class="pl-e">popover-placement</span>=<span class="pl-s"><span class="pl-pds">"</span>left<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">button</span>&gt;</pre></div>
 
 <h2>
 <a id="can-i-contribute" class="anchor" href="#can-i-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Can I contribute?</h2>
