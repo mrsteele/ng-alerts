@@ -17,7 +17,8 @@
   "homepage": "https://github.com/mrsteele/ng-alerts",
   "moduleType": [],
   "ignore": [
-    "src"
+    "src",
+    "Gruntfile.js"
   ],
   "dependencies": {
     "angular": "~1.4.8",
