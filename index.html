@@ -47,6 +47,10 @@
             padding-bottom: 50px;
         }
         
+        .page-header .alert {
+            color: #222;
+        }
+        
         .abs {
             position: relative;
         }
@@ -64,10 +68,10 @@
         
     </style>
   </head>
-  <body>
+  <body ng-app="testApp">
     <section class="page-header">
       <div id="test-area" ng-controller="MainCtrl">
-        <button class="btn abs" href="#" ng-alerts-popover position="bottom">Messages<ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count></button>  
+        <button class="btn abs" href="#" ng-alerts-popover popover-placement="bottom">Messages<ng-alerts-count badge="true" hide-empty="true"></ng-alerts-count></button>  
         <button class="btn" href="#" ng-click="addAlert()">Create Alert</button> 
         <p>Test things here ^</p>
       </div>
