@@ -1,8 +1,16 @@
-/*! ng-alerts 2015-12-19 */
+/*! ng-alerts 2015-12-27 */
 'use strict';
 
 angular.module('ngAlerts', ['ui.bootstrap'])
     
+    /**
+     * Use this provider to configure defaults.
+     * @param {Object} options - The options to configure.
+     * @param {String} options.emptyListText - The default empty list text.
+     * @param {Number} options.queueTimeout - The miliseconds till an alert timesout.
+     * @param {String} options.queueLocation - The location of the queue (i.e. "top left" or "bottom right", etc...).
+     * @returns {Object} The default options, specifically an object with an "options" parameter.
+     */
     .provider('ngAlerts', function () {
         
         // defaults
@@ -17,10 +25,18 @@ angular.module('ngAlerts', ['ui.bootstrap'])
         };
     })
 
-    .run(['$compile', '$rootScope', function ($compile, $rootScope) {
+    /**
+     * Called when this module runs. Specifically it adds the queue object to the stage.
+     */
+    .run(function () {
         angular.element(document).find('body').append('<ng-alerts-queue></ng-alerts-queue>');
-    }]);
+    });
 
+/**
+ * Shows a simple alert total.
+ * @param {Bool=} badge - To show the number as a badge.
+ * @param {Bool=} hide-empty - To not display anything if the number is 0.
+ */
 angular.module('ngAlerts').directive('ngAlertsCount', [
     'ngAlertsMngr',
     'ngAlertsEvent',
@@ -46,6 +62,10 @@ angular.module('ngAlerts').directive('ngAlertsCount', [
         };
     }
 ]);
+/**
+ * Lists all alerts.
+ * @param {String=} empty-text - The text to display if the list is empty (defaults to global set in provider).
+ */
 angular.module('ngAlerts').directive('ngAlertsList', [
     'ngAlertsMngr',
     'ngAlertsEvent',
@@ -74,6 +94,11 @@ angular.module('ngAlerts').directive('ngAlertsList', [
     }
 ]);
 
+/**
+ * Wraps a popover object to the handler (using the angular bootstrap "popover" directive).
+ * @param {String=} empty-text - The text to display if the list is empty (defaults to global set in provider).
+ * @see https://angular-ui.github.io/bootstrap/#/popover
+*/
 angular.module('ngAlerts').directive('ngAlertsPopover', [
     'ngAlertsEvent',
     '$compile',
@@ -108,6 +133,9 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
         };
     }
 ]);
+/**
+ * Used internally to show the alert queue.
+ */
 angular.module('ngAlerts').directive('ngAlertsQueue', [
     'ngAlertsMngr',
     'ngAlertsEvent',
@@ -151,6 +179,12 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
         };
     }
 ]);
+/**
+ * An alert model.
+ * @member {String} id - The unique id.
+ * @member {String} msg - The message of the alert.
+ * @member {String} type - The type of alert.
+ */
 angular.module('ngAlerts').factory('NgAlert', [
     'ngAlertsId',
     function (ngAlertsId) {
@@ -166,12 +200,20 @@ angular.module('ngAlerts').factory('NgAlert', [
     }
 ]);
 
+/**
+ * Assists with writing unique identifiers.
+ */
 angular.module('ngAlerts').factory('ngAlertsId', [
     function () {
         'use strict';
 
         var factory = {};
 
+        /**
+         * Creates a unique identifier.
+         * @param {String[]=} existing - An optional list of existing identifiers to verify uniqueness.
+         * @returns {String} The unique identifier.
+         */
         factory.create = function (existing) {
             existing = existing || [];
 
@@ -188,6 +230,9 @@ angular.module('ngAlerts').factory('ngAlertsId', [
     }
 ]);
 
+/**
+ * Manages all notification systems.
+ */
 angular.module('ngAlerts').factory('ngAlertsMngr', [
     'ngAlertsEvent',
     'NgAlert',
@@ -198,20 +243,37 @@ angular.module('ngAlerts').factory('ngAlertsMngr', [
         var alerts = [],
             mngr = {};
 
+        /**
+         * Fires an alert event.
+         * @param {String} name - The name of the event.
+         * @param {Object=} args - Any optional arguments.
+         */
         function fire(name, args) {
             ngAlertsEvent.fire(name, args);
             ngAlertsEvent.fire('change', args);
         }
 
+        /**
+         * Gets the alerts.
+         * @returns {NgAlert[]} An array of alerts.
+         */
         mngr.get = function () {
             return angular.copy(alerts);
         };
 
+        /**
+         * Resets the alerts in storage.
+         */
         mngr.reset = function () {
             alerts = [];
             fire('reset');
         };
 
+        /**
+         * Adds a new alert
+         * @param {String} msg - The message in the alert.
+         * @param {String} type - The alert type (success, warning, etc...).
+         */
         mngr.add = function (msg, type) {
             var i, ids = [];
             for (i = 0; i < alerts.length; i += 1) {
@@ -222,6 +284,10 @@ angular.module('ngAlerts').factory('ngAlertsMngr', [
             fire('add', alerts[i - 1]);
         };
 
+        /**
+         * Removes a specific alert.
+         * @param {String} id - The unique identifier of the alert.
+         */
         mngr.remove = function (id) {
             var i;
             for (i = 0; i < alerts.length; i += 1) {
@@ -236,15 +302,28 @@ angular.module('ngAlerts').factory('ngAlertsMngr', [
         return mngr;
     }
 ]);
+/**
+ * Provides event systems to ngAlerts.
+ */
 angular.module('ngAlerts').service('ngAlertsEvent', [
     '$rootScope',
     function ($rootScope) {
         'use strict';
 
+        /**
+         * Creates an event string.
+         * @param {String} name - The name of the event.
+         * @returns {String} The proper prefixed event string.
+         */
         this.event = function (name) {
             return 'ngAlerts.' + name;
         };
 
+        /**
+         * Fires an event.
+         * @param {String} name - the event name.
+         * @param {Object=} args - Any arguments needed.
+         */
         this.fire = function (name, args) {
             $rootScope.$broadcast(this.event(name), args);
         };

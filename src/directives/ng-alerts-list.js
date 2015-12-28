@@ -1,3 +1,7 @@
+/**
+ * Lists all alerts.
+ * @param {String=} empty-text - The text to display if the list is empty (defaults to global set in provider).
+ */
 angular.module('ngAlerts').directive('ngAlertsList', [
     'ngAlertsMngr',
     'ngAlertsEvent',

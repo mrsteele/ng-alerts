@@ -1,3 +1,9 @@
+/**
+ * An alert model.
+ * @member {String} id - The unique id.
+ * @member {String} msg - The message of the alert.
+ * @member {String} type - The type of alert.
+ */
 angular.module('ngAlerts').factory('NgAlert', [
     'ngAlertsId',
     function (ngAlertsId) {

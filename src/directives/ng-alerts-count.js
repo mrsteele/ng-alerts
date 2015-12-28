@@ -1,3 +1,8 @@
+/**
+ * Shows a simple alert total.
+ * @param {Bool=} badge - To show the number as a badge.
+ * @param {Bool=} hide-empty - To not display anything if the number is 0.
+ */
 angular.module('ngAlerts').directive('ngAlertsCount', [
     'ngAlertsMngr',
     'ngAlertsEvent',

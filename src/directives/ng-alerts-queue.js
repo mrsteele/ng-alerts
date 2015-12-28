@@ -1,3 +1,6 @@
+/**
+ * Used internally to show the alert queue.
+ */
 angular.module('ngAlerts').directive('ngAlertsQueue', [
     'ngAlertsMngr',
     'ngAlertsEvent',
