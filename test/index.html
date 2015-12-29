@@ -41,6 +41,7 @@
         testApp.config(['ngAlertsProvider', function (ngAlertsProvider) {
             ngAlertsProvider.options.emptyListText = 'Nothing here...';
             ngAlertsProvider.options.queueTimeout = 5000;
+            // ngAlertsProvider.options.queue = false;
         }]);
         
         testApp.controller('TestCtrl', ['$scope', 'ngAlertsMngr', function ($scope, ngAlertsMngr) {

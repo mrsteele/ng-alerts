@@ -35,10 +35,12 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                 });
 
                 $scope.$on(ngAlertsEvent.event('add'), function (e, alert) {
-                    $scope.alerts.push(alert);
-                    $timeout(function () {
-                        remove(alert.id);
-                    }, ngAlerts.options.queueTimeout);
+                    if (ngAlerts.options.queue) {
+                        $scope.alerts.push(alert);
+                        $timeout(function () {
+                            remove(alert.id);
+                        }, ngAlerts.options.queueTimeout);
+                    }
                 });
             }
         };
