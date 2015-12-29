@@ -18,6 +18,7 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
             link: function ($scope, $element, $attrs) {
                 
                 $element.attr('uib-popover-template', 'templateUrl');
+                $element.attr('popover-is-open', 'isOpen');
                 $element.removeAttr('ng-alerts-popover');
                 
                 // Ready with 1.0 release
@@ -30,6 +31,11 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
                 
                 $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;
+                
+                $scope.isOpen = false;
+                $scope.closePopover = function () {
+                    $scope.isOpen = false;
+                };
                 
                 $compile($element)($scope);
                 

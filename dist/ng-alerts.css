@@ -23,3 +23,6 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+.popover-title a {
+  text-decoration: none;
+}
