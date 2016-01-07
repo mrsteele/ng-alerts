@@ -1,4 +1,4 @@
-/*! ng-alerts 2015-12-28 */
+/*! ng-alerts 2016-01-07 */
 'use strict';
 
 angular.module('ngAlerts', ['ui.bootstrap'])
@@ -96,6 +96,49 @@ angular.module('ngAlerts').directive('ngAlertsList', [
     }
 ]);
 
+/**
+ * Wraps a popover object to the handler (using the angular bootstrap "popover" directive).
+ * @param {String=} empty-text - The text to display if the list is empty (defaults to global set in provider).
+ * @see https://angular-ui.github.io/bootstrap/#/popover
+ */
+angular.module('ngAlerts').directive('ngAlertsModal', [
+    'ngAlertsEvent',
+    '$uibModal',
+    '$compile',
+    '$timeout',
+    '$sce',
+    function (ngAlertsEvent, $uibModal, $compile, $timeout, $sce) {
+        'use strict';
+
+        return {
+            restrict: 'A',
+            terminal: true,
+            priority: 1000,
+            link: function ($scope, $element, $attrs) {
+
+                $element.attr('ng-click', 'openModal()');
+                $element.removeAttr('ng-alerts-modal');
+                
+                $scope.emptyText = $attrs.emptyText;
+
+                $scope.openModal = function () {
+                    $scope.modalInstance = $uibModal.open({
+                        animation: true,
+                        templateUrl: 'template/ng-alerts/sub/modal-list.html',
+                        size: $attrs.size || 'lg'
+                    });
+                    
+                    $scope.modalInstance.result.then(function () {
+                        $scope.modalInstance = null;
+                    });
+                };
+
+                $compile($element)($scope);
+
+            }
+        };
+    }
+]);
 /**
  * Wraps a popover object to the handler (using the angular bootstrap "popover" directive).
  * @param {String=} empty-text - The text to display if the list is empty (defaults to global set in provider).
@@ -412,6 +455,37 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "        {{alert.msg}}\r" +
     "\n" +
     "    </uib-alert>\r" +
+    "\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('template/ng-alerts/sub/modal-list.html',
+    "<div>\r" +
+    "\n" +
+    "    <div class=\"modal-header\">\r" +
+    "\n" +
+    "        <h3 class=\"modal-title\">\r" +
+    "\n" +
+    "            Notifications\r" +
+    "\n" +
+    "            <button type=\"button\" ng-click=\"$dismiss()\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\r" +
+    "\n" +
+    "        </h3>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"modal-body\">\r" +
+    "\n" +
+    "        <ng-alerts-list empty-text=\"{{emptyText}}\"></ng-alerts-list>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"modal-footer\">\r" +
+    "\n" +
+    "        <button class=\"btn btn-primary\" type=\"button\" ng-click=\"$dismiss()\">Close</button>\r" +
+    "\n" +
+    "    </div>\r" +
     "\n" +
     "</div>"
   );

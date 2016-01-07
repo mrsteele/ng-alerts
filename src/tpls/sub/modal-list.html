@@ -1,0 +1,14 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">
+            Notifications
+            <button type="button" ng-click="$dismiss()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </h3>
+    </div>
+    <div class="modal-body">
+        <ng-alerts-list empty-text="{{emptyText}}"></ng-alerts-list>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$dismiss()">Close</button>
+    </div>
+</div>
