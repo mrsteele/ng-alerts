@@ -21,7 +21,7 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
                 $element.attr('popover-is-open', 'isOpen');
                 $element.removeAttr('ng-alerts-popover');
                 
-                // Ready with 1.0 release
+                // @todo - Update this to not close when clicking on the window...
 //                if (!$attrs.popoverTrigger) {
 //                    $element.attr('popover-trigger', 'outsideClick');
 //                }
