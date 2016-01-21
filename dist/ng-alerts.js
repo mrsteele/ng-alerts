@@ -1,4 +1,4 @@
-/*! ng-alerts 2016-01-07 */
+/*! ng-alerts 2016-01-21 */
 'use strict';
 
 angular.module('ngAlerts', ['ui.bootstrap'])
@@ -168,7 +168,7 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
 //                }
                 
                 // Custom classes not available yet
-                //$element.attr('popover-class', 'ng-alerts-popover-list');
+                $element.attr('popover-class', 'ng-alerts-popover-list');
                 
                 $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;
@@ -387,125 +387,75 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('template/ng-alerts/count.html',
-    "<span ng-class=\"{'badge': badge}\">{{count}}</span>\r" +
-    "\n"
+    "<span ng-class=\"{'badge': badge}\">{{count}}</span>\n"
   );
 
 
   $templateCache.put('template/ng-alerts/list.html',
-    "<div class=\"ng-alerts-list\">\r" +
-    "\n" +
-    "    <div ng-show=\"alerts.length > 0\">\r" +
-    "\n" +
-    "        <table class=\"table table-hover table-condensed\">\r" +
-    "\n" +
-    "            <thead>\r" +
-    "\n" +
-    "                <tr>\r" +
-    "\n" +
-    "                    <th colspan=\"2\">Message</th>\r" +
-    "\n" +
-    "                </tr>\r" +
-    "\n" +
-    "            </thead>\r" +
-    "\n" +
-    "            <tbody>\r" +
-    "\n" +
-    "                <tr ng-repeat=\"alert in alerts\" class=\"{{alert.type}}\">\r" +
-    "\n" +
-    "                    <td>\r" +
-    "\n" +
-    "                        {{alert.msg}}\r" +
-    "\n" +
-    "                    </td>\r" +
-    "\n" +
-    "                    <td>\r" +
-    "\n" +
-    "                        <button ng-click=\"remove(alert.id)\" type=\"button\" class=\"close\" aria-label=\"Close\">\r" +
-    "\n" +
-    "                            <span aria-hidden=\"true\">&times;</span>\r" +
-    "\n" +
-    "                        </button>\r" +
-    "\n" +
-    "                    </td>\r" +
-    "\n" +
-    "                </tr>\r" +
-    "\n" +
-    "            </tbody>\r" +
-    "\n" +
-    "        </table>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "    <div ng-show=\"alerts.length === 0\">\r" +
-    "\n" +
-    "        {{emptyList}}\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
+    "<div class=\"ng-alerts-list\">\n" +
+    "    <div ng-show=\"alerts.length > 0\">\n" +
+    "        <table class=\"table table-hover table-condensed\">\n" +
+    "            <thead>\n" +
+    "                <tr>\n" +
+    "                    <th colspan=\"2\">Message</th>\n" +
+    "                </tr>\n" +
+    "            </thead>\n" +
+    "            <tbody>\n" +
+    "                <tr ng-repeat=\"alert in alerts\" class=\"{{alert.type}}\">\n" +
+    "                    <td>\n" +
+    "                        {{alert.msg}}\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                        <button ng-click=\"remove(alert.id)\" type=\"button\" class=\"close\" aria-label=\"Close\">\n" +
+    "                            <span aria-hidden=\"true\">&times;</span>\n" +
+    "                        </button>\n" +
+    "                    </td>\n" +
+    "                </tr>\n" +
+    "            </tbody>\n" +
+    "        </table>\n" +
+    "    </div>\n" +
+    "    <div ng-show=\"alerts.length === 0\">\n" +
+    "        {{emptyList}}\n" +
+    "    </div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('template/ng-alerts/queue.html',
-    "<div id=\"ng-alerts-queue\" class=\"{{location}}\">\r" +
-    "\n" +
-    "    <uib-alert ng-repeat=\"alert in alerts\" type=\"{{alert.type}}\" close=\"remove(alert.id)\">\r" +
-    "\n" +
-    "        {{alert.msg}}\r" +
-    "\n" +
-    "    </uib-alert>\r" +
-    "\n" +
+    "<div id=\"ng-alerts-queue\" class=\"{{location}}\">\n" +
+    "    <uib-alert ng-repeat=\"alert in alerts\" type=\"{{alert.type}}\" close=\"remove(alert.id)\">\n" +
+    "        {{alert.msg}}\n" +
+    "    </uib-alert>\n" +
     "</div>"
   );
 
 
   $templateCache.put('template/ng-alerts/sub/modal-list.html',
-    "<div>\r" +
-    "\n" +
-    "    <div class=\"modal-header\">\r" +
-    "\n" +
-    "        <h3 class=\"modal-title\">\r" +
-    "\n" +
-    "            Notifications\r" +
-    "\n" +
-    "            <button type=\"button\" ng-click=\"$dismiss()\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\r" +
-    "\n" +
-    "        </h3>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "    <div class=\"modal-body\">\r" +
-    "\n" +
-    "        <ng-alerts-list empty-text=\"{{emptyText}}\"></ng-alerts-list>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "    <div class=\"modal-footer\">\r" +
-    "\n" +
-    "        <button class=\"btn btn-primary\" type=\"button\" ng-click=\"$dismiss()\">Close</button>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
+    "<div>\n" +
+    "    <div class=\"modal-header\">\n" +
+    "        <h3 class=\"modal-title\">\n" +
+    "            Notifications\n" +
+    "            <button type=\"button\" ng-click=\"$dismiss()\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+    "        </h3>\n" +
+    "    </div>\n" +
+    "    <div class=\"modal-body\">\n" +
+    "        <ng-alerts-list empty-text=\"{{emptyText}}\"></ng-alerts-list>\n" +
+    "    </div>\n" +
+    "    <div class=\"modal-footer\">\n" +
+    "        <button class=\"btn btn-primary\" type=\"button\" ng-click=\"$dismiss()\">Close</button>\n" +
+    "    </div>\n" +
     "</div>"
   );
 
 
   $templateCache.put('template/ng-alerts/sub/popover-list.html',
-    "<div>\r" +
-    "\n" +
-    "    <h2 class=\"popover-title clearfix\">\r" +
-    "\n" +
-    "        <a class=\"pull-right\" ng-click=\"closePopover()\">&times;</a>\r" +
-    "\n" +
-    "    </h2>\r" +
-    "\n" +
-    "    <div class=\"popover-content\">\r" +
-    "\n" +
-    "        <ng-alerts-list empty-text=\"{{emptyText}}\"></ng-alerts-list>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
+    "<div>\n" +
+    "    <h2 class=\"popover-title clearfix\">\n" +
+    "        <a class=\"pull-right\" ng-click=\"closePopover()\">&times;</a>\n" +
+    "    </h2>\n" +
+    "    <div class=\"popover-content\">\n" +
+    "        <ng-alerts-list empty-text=\"{{emptyText}}\"></ng-alerts-list>\n" +
+    "    </div>\n" +
     "</div>"
   );
 

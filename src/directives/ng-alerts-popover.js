@@ -27,7 +27,7 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
 //                }
                 
                 // Custom classes not available yet
-                //$element.attr('popover-class', 'ng-alerts-popover-list');
+                $element.attr('popover-class', 'ng-alerts-popover-list');
                 
                 $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;

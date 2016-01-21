@@ -20,11 +20,19 @@
 }
 
 // Doesn't work yet...
-.ng-alerts-popover-list .popover-content {
-    padding: 0 10px;
-    max-height: 200px;
-    overflow-y: auto;
-    overflow-x: hidden;
+.ng-alerts-popover-list > .popover-inner {
+    > .popover-content {
+        padding: 0;
+    }
+    .ng-alerts-list {
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        min-width: 200px;
+        table {
+            font-size: 0.8em;
+        }
+    }
 }
 
 .popover-title a {
