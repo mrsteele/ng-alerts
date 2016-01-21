@@ -1,7 +1,7 @@
 # ng-alerts
 
-[![dependency Status](https://david-dm.org/mrsteele/ng-alerts.svg)](https://david-dm.org/angular-ui/bootstrap#info=dependencies)
-[![devDependency Status](https://david-dm.org/mrsteele/ng-alerts/dev-status.svg)](https://david-dm.org/angular-ui/bootstrap#info=devDependencies)
+[![dependency Status](https://david-dm.org/mrsteele/ng-alerts.svg)](https://david-dm.org/mrsteele/ng-alerts#info=dependencies)
+[![devDependency Status](https://david-dm.org/mrsteele/ng-alerts/dev-status.svg)](https://david-dm.org/mrsteele/ng-alerts#info=devDependencies)
 
 An angular extension to manager front-end notifications and alerts.
 
