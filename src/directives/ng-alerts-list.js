@@ -16,7 +16,8 @@ angular.module('ngAlerts').directive('ngAlertsList', [
                     $scope.alerts = ngAlertsMngr.get();
                 }
 
-                $scope.remove = function (id) {
+                $scope.remove = function (id, $event) {
+                    $event.stopImmediatePropagation();
                     ngAlertsMngr.remove(id);
                 };
 

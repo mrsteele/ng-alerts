@@ -1,4 +1,4 @@
-/*! ng-alerts 2016-01-21 */
+/*! ng-alerts 2016-01-30 */
 'use strict';
 
 angular.module('ngAlerts', ['ui.bootstrap'])
@@ -82,7 +82,8 @@ angular.module('ngAlerts').directive('ngAlertsList', [
                     $scope.alerts = ngAlertsMngr.get();
                 }
 
-                $scope.remove = function (id) {
+                $scope.remove = function (id, $event) {
+                    $event.stopImmediatePropagation();
                     ngAlertsMngr.remove(id);
                 };
 
@@ -163,9 +164,9 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
                 $element.removeAttr('ng-alerts-popover');
                 
                 // @todo - Update this to not close when clicking on the window...
-//                if (!$attrs.popoverTrigger) {
-//                    $element.attr('popover-trigger', 'outsideClick');
-//                }
+                if (!$attrs.popoverTrigger) {
+                    $element.attr('popover-trigger', 'outsideClick');
+                }
                 
                 // Custom classes not available yet
                 $element.attr('popover-class', 'ng-alerts-popover-list');
@@ -406,7 +407,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "                        {{alert.msg}}\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                        <button ng-click=\"remove(alert.id)\" type=\"button\" class=\"close\" aria-label=\"Close\">\n" +
+    "                        <button ng-click=\"remove(alert.id, $event)\" type=\"button\" class=\"close\" aria-label=\"Close\">\n" +
     "                            <span aria-hidden=\"true\">&times;</span>\n" +
     "                        </button>\n" +
     "                    </td>\n" +
