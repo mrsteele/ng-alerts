@@ -17,6 +17,7 @@ angular.module('ngAlerts', ['ui.bootstrap'])
         // defaults
         this.options = {
             emptyListText: 'No messages',
+            listColors: false,
             queueTimeout: 3000,
             queueLocation: 'bottom right',
             queue: true
@@ -88,6 +89,8 @@ angular.module('ngAlerts').directive('ngAlertsList', [
                 };
 
                 $scope.$on(ngAlertsEvent.event('change'), reset);
+                
+                $scope.$provider = ngAlerts;
                 
                 $scope.emptyList = $attrs.emptyText || ngAlerts.options.emptyListText;
 
@@ -174,11 +177,6 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
                 $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;
                 
-                $scope.isOpen = false;
-                $scope.closePopover = function () {
-                    $scope.isOpen = false;
-                };
-                
                 $compile($element)($scope);
                 
             }
@@ -248,6 +246,12 @@ angular.module('ngAlerts').factory('NgAlert', [
             this.id = id || ngAlertsId.create();
             this.msg = msg || '';
             this.type = type || 'warning';
+        };
+        
+        NgAlert.prototype.getTime = function () {
+            
+            // @todo - Need this to say the actual time.
+            return "Yesterday";
         };
 
         return NgAlert;
@@ -396,14 +400,10 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "<div class=\"ng-alerts-list\">\n" +
     "    <div ng-show=\"alerts.length > 0\">\n" +
     "        <table class=\"table table-hover table-condensed\">\n" +
-    "            <thead>\n" +
-    "                <tr>\n" +
-    "                    <th colspan=\"2\">Message</th>\n" +
-    "                </tr>\n" +
-    "            </thead>\n" +
     "            <tbody>\n" +
-    "                <tr ng-repeat=\"alert in alerts\" class=\"{{alert.type}}\">\n" +
+    "                <tr ng-repeat=\"alert in alerts\" ng-class=\"$provider.options.listColors ? alert.type : 'default'\">\n" +
     "                    <td>\n" +
+    "                        <small>{{alert.getTime()}}</small><br />\n" +
     "                        {{alert.msg}}\n" +
     "                    </td>\n" +
     "                    <td>\n" +
@@ -451,9 +451,6 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('template/ng-alerts/sub/popover-list.html',
     "<div>\n" +
-    "    <h2 class=\"popover-title clearfix\">\n" +
-    "        <a class=\"pull-right\" ng-click=\"closePopover()\">&times;</a>\n" +
-    "    </h2>\n" +
     "    <div class=\"popover-content\">\n" +
     "        <ng-alerts-list empty-text=\"{{emptyText}}\"></ng-alerts-list>\n" +
     "    </div>\n" +

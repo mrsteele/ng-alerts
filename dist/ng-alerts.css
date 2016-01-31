@@ -17,17 +17,40 @@
 #ng-alerts-queue.left {
   left: 0;
 }
-.ng-alerts-popover-list > .popover-inner > .popover-content {
+.ng-alerts-list table {
+  font-size: 0.8em;
+  margin-bottom: 0;
+}
+.ng-alerts-list table tr:first-child td {
+  border-top: none;
+}
+.ng-alerts-list table .close {
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+.ng-alerts-list table tr:hover .close {
+  opacity: 0.5;
+}
+.ng-alerts-list table tr td:first-child {
+  padding-left: 10px;
+}
+.ng-alerts-list table tr td:last-child {
+  padding-right: 10px;
+}
+.ng-alerts-list table small {
+  opacity: 0.4;
+}
+.ng-alerts-popover-list {
+  border-radius: 0;
+}
+.ng-alerts-popover-list .popover-content {
   padding: 0;
 }
-.ng-alerts-popover-list > .popover-inner .ng-alerts-list {
+.ng-alerts-popover-list .ng-alerts-list {
   max-height: 200px;
   overflow-y: auto;
   overflow-x: hidden;
   min-width: 200px;
-}
-.ng-alerts-popover-list > .popover-inner .ng-alerts-list table {
-  font-size: 0.8em;
 }
 .popover-title a {
   text-decoration: none;

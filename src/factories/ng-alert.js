@@ -14,6 +14,12 @@ angular.module('ngAlerts').factory('NgAlert', [
             this.msg = msg || '';
             this.type = type || 'warning';
         };
+        
+        NgAlert.prototype.getTime = function () {
+            
+            // @todo - Need this to say the actual time.
+            return "Yesterday";
+        };
 
         return NgAlert;
     }

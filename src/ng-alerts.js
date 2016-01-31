@@ -16,6 +16,7 @@ angular.module('ngAlerts', ['ui.bootstrap'])
         // defaults
         this.options = {
             emptyListText: 'No messages',
+            listColors: false,
             queueTimeout: 3000,
             queueLocation: 'bottom right',
             queue: true

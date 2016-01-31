@@ -1,14 +1,10 @@
 <div class="ng-alerts-list">
     <div ng-show="alerts.length > 0">
         <table class="table table-hover table-condensed">
-            <thead>
-                <tr>
-                    <th colspan="2">Message</th>
-                </tr>
-            </thead>
             <tbody>
-                <tr ng-repeat="alert in alerts" class="{{alert.type}}">
+                <tr ng-repeat="alert in alerts" ng-class="$provider.options.listColors ? alert.type : 'default'">
                     <td>
+                        <small>{{alert.getTime()}}</small><br />
                         {{alert.msg}}
                     </td>
                     <td>

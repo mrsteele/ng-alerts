@@ -32,11 +32,6 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
                 $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;
                 
-                $scope.isOpen = false;
-                $scope.closePopover = function () {
-                    $scope.isOpen = false;
-                };
-                
                 $compile($element)($scope);
                 
             }

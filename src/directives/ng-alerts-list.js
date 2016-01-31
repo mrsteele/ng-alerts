@@ -23,6 +23,8 @@ angular.module('ngAlerts').directive('ngAlertsList', [
 
                 $scope.$on(ngAlertsEvent.event('change'), reset);
                 
+                $scope.$provider = ngAlerts;
+                
                 $scope.emptyList = $attrs.emptyText || ngAlerts.options.emptyListText;
 
                 reset();
