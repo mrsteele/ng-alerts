@@ -2,7 +2,7 @@
     <div ng-show="alerts.length > 0">
         <table class="table table-hover table-condensed">
             <tbody>
-                <tr ng-repeat="alert in alerts" ng-class="$provider.options.listColors ? alert.type : 'default'">
+                <tr ng-repeat="alert in alerts" ng-class="alert.type">
                     <td>
                         <small>{{alert.getTime()}}</small><br />
                         {{alert.msg}}

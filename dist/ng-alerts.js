@@ -17,7 +17,6 @@ angular.module('ngAlerts', ['ui.bootstrap'])
         // defaults
         this.options = {
             emptyListText: 'No messages',
-            listColors: true,
             queueTimeout: 3000,
             queueLocation: 'bottom right',
             queue: true
@@ -101,8 +100,6 @@ angular.module('ngAlerts').directive('ngAlertsList', [
                 };
 
                 $scope.$on(ngAlertsEvent.event('change'), reset);
-
-                $scope.$provider = ngAlerts;
 
                 $scope.emptyList = $attrs.emptyText || ngAlerts.options.emptyListText;
 
@@ -518,7 +515,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "    <div ng-show=\"alerts.length > 0\">\n" +
     "        <table class=\"table table-hover table-condensed\">\n" +
     "            <tbody>\n" +
-    "                <tr ng-repeat=\"alert in alerts\" ng-class=\"$provider.options.listColors ? alert.type : 'default'\">\n" +
+    "                <tr ng-repeat=\"alert in alerts\" ng-class=\"alert.type\">\n" +
     "                    <td>\n" +
     "                        <small>{{alert.getTime()}}</small><br />\n" +
     "                        {{alert.msg}}\n" +
