@@ -20,16 +20,19 @@ angular.module('ngAlerts').directive('ngAlertsModal', [
 
                 $element.attr('ng-click', 'openModal()');
                 $element.removeAttr('ng-alerts-modal');
-                
+
                 $scope.emptyText = $attrs.emptyText;
 
+                /**
+                 * Opens a modal with the list of alerts created.
+                 */
                 $scope.openModal = function () {
                     $scope.modalInstance = $uibModal.open({
                         animation: true,
                         templateUrl: 'template/ng-alerts/sub/modal-list.html',
                         size: $attrs.size || 'lg'
                     });
-                    
+
                     $scope.modalInstance.result.then(function () {
                         $scope.modalInstance = null;
                     });

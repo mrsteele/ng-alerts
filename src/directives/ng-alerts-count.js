@@ -8,10 +8,14 @@ angular.module('ngAlerts').directive('ngAlertsCount', [
     'ngAlertsEvent',
     function (ngAlertsMngr, ngAlertsEvent) {
         'use strict';
-    
+
         return {
             templateUrl: 'template/ng-alerts/count.html',
             link: function ($scope, $element, $attrs) {
+                
+                /**
+                 * Resets the alert count view.
+                 */
                 function reset() {
                     $scope.count = ngAlertsMngr.get().length;
                     $scope.badge = ($attrs.badge);
