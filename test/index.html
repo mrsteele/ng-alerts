@@ -35,7 +35,8 @@
             'success',
             'warning',
             'danger',
-            'info'
+            'info',
+            'default'
         ];
         var testApp = angular.module('testApp', [
             'ui.bootstrap',
@@ -53,7 +54,11 @@
                 var type = randoms[Math.round(Math.random() * (randoms.length - 1))];
                 
                 
-                ngAlertsMngr.add('Adding a "' + type + '" alert.', type);
+                ngAlertsMngr.add({
+                    msg: 'Adding a "' + type + '" alert.',
+                    type: type,
+                    time: Date.now() - Math.round(Math.random() * 10000000000)
+                });
             };
         }]);
         

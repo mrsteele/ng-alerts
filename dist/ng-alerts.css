@@ -17,6 +17,10 @@
 #ng-alerts-queue.left {
   left: 0;
 }
+.alert.alert-default {
+  background: #fff;
+  border-color: #eee;
+}
 .ng-alerts-list table {
   font-size: 0.8em;
   margin-bottom: 0;
@@ -51,6 +55,9 @@
   overflow-y: auto;
   overflow-x: hidden;
   min-width: 200px;
+}
+.ng-alerts-popover-list .ng-alerts-list .empty-list {
+  padding: 10px;
 }
 .popover-title a {
   text-decoration: none;

@@ -12,19 +12,26 @@ angular.module('ngAlerts').directive('ngAlertsList', [
         return {
             templateUrl: 'template/ng-alerts/list.html',
             link: function ($scope, $element, $attrs) {
+                
+                /**
+                 * Resets the list view.
+                 */
                 function reset() {
                     $scope.alerts = ngAlertsMngr.get();
                 }
 
+                /**
+                 * Removes an alert item from the list.
+                 */
                 $scope.remove = function (id, $event) {
                     $event.stopImmediatePropagation();
                     ngAlertsMngr.remove(id);
                 };
 
                 $scope.$on(ngAlertsEvent.event('change'), reset);
-                
+
                 $scope.$provider = ngAlerts;
-                
+
                 $scope.emptyList = $attrs.emptyText || ngAlerts.options.emptyListText;
 
                 reset();

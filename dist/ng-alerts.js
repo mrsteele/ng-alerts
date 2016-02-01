@@ -1,4 +1,4 @@
-/*! ng-alerts 2016-01-30 */
+/*! ng-alerts 2016-01-31 */
 'use strict';
 
 angular.module('ngAlerts', ['ui.bootstrap'])
@@ -17,7 +17,7 @@ angular.module('ngAlerts', ['ui.bootstrap'])
         // defaults
         this.options = {
             emptyListText: 'No messages',
-            listColors: false,
+            listColors: true,
             queueTimeout: 3000,
             queueLocation: 'bottom right',
             queue: true
@@ -45,10 +45,14 @@ angular.module('ngAlerts').directive('ngAlertsCount', [
     'ngAlertsEvent',
     function (ngAlertsMngr, ngAlertsEvent) {
         'use strict';
-    
+
         return {
             templateUrl: 'template/ng-alerts/count.html',
             link: function ($scope, $element, $attrs) {
+                
+                /**
+                 * Resets the alert count view.
+                 */
                 function reset() {
                     $scope.count = ngAlertsMngr.get().length;
                     $scope.badge = ($attrs.badge);
@@ -65,6 +69,7 @@ angular.module('ngAlerts').directive('ngAlertsCount', [
         };
     }
 ]);
+
 /**
  * Lists all alerts.
  * @param {String=} empty-text - The text to display if the list is empty (defaults to global set in provider).
@@ -79,19 +84,26 @@ angular.module('ngAlerts').directive('ngAlertsList', [
         return {
             templateUrl: 'template/ng-alerts/list.html',
             link: function ($scope, $element, $attrs) {
+                
+                /**
+                 * Resets the list view.
+                 */
                 function reset() {
                     $scope.alerts = ngAlertsMngr.get();
                 }
 
+                /**
+                 * Removes an alert item from the list.
+                 */
                 $scope.remove = function (id, $event) {
                     $event.stopImmediatePropagation();
                     ngAlertsMngr.remove(id);
                 };
 
                 $scope.$on(ngAlertsEvent.event('change'), reset);
-                
+
                 $scope.$provider = ngAlerts;
-                
+
                 $scope.emptyList = $attrs.emptyText || ngAlerts.options.emptyListText;
 
                 reset();
@@ -122,16 +134,19 @@ angular.module('ngAlerts').directive('ngAlertsModal', [
 
                 $element.attr('ng-click', 'openModal()');
                 $element.removeAttr('ng-alerts-modal');
-                
+
                 $scope.emptyText = $attrs.emptyText;
 
+                /**
+                 * Opens a modal with the list of alerts created.
+                 */
                 $scope.openModal = function () {
                     $scope.modalInstance = $uibModal.open({
                         animation: true,
                         templateUrl: 'template/ng-alerts/sub/modal-list.html',
                         size: $attrs.size || 'lg'
                     });
-                    
+
                     $scope.modalInstance.result.then(function () {
                         $scope.modalInstance = null;
                     });
@@ -143,11 +158,12 @@ angular.module('ngAlerts').directive('ngAlertsModal', [
         };
     }
 ]);
+
 /**
  * Wraps a popover object to the handler (using the angular bootstrap "popover" directive).
  * @param {String=} empty-text - The text to display if the list is empty (defaults to global set in provider).
  * @see https://angular-ui.github.io/bootstrap/#/popover
-*/
+ */
 angular.module('ngAlerts').directive('ngAlertsPopover', [
     'ngAlertsEvent',
     '$compile',
@@ -155,34 +171,33 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
     '$sce',
     function (ngAlertsEvent, $compile, $timeout, $sce) {
         'use strict';
-        
+
         return {
             restrict: 'A',
             terminal: true,
             priority: 1000,
             link: function ($scope, $element, $attrs) {
-                
+
                 $element.attr('uib-popover-template', 'templateUrl');
                 $element.attr('popover-is-open', 'isOpen');
                 $element.removeAttr('ng-alerts-popover');
-                
-                // @todo - Update this to not close when clicking on the window...
+
                 if (!$attrs.popoverTrigger) {
                     $element.attr('popover-trigger', 'outsideClick');
                 }
-                
-                // Custom classes not available yet
+
                 $element.attr('popover-class', 'ng-alerts-popover-list');
-                
+
                 $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;
-                
+
                 $compile($element)($scope);
-                
+
             }
         };
     }
 ]);
+
 /**
  * Used internally to show the alert queue.
  */
@@ -199,6 +214,9 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
             link: function ($scope) {
                 $scope.alerts = [];
 
+                /**
+                 * Removes a specific alert by id.
+                 */
                 function remove(id) {
                     var i;
                     for (i = 0; i < $scope.alerts.length; i += 1) {
@@ -208,9 +226,12 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                         }
                     }
                 }
-                
+
                 $scope.location = ngAlerts.options.queueLocation;
-                
+
+                /**
+                 * Public remove script.
+                 */
                 $scope.remove = function (id) {
                     ngAlertsMngr.remove(id);
                 };
@@ -231,6 +252,7 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
         };
     }
 ]);
+
 /**
  * An alert model.
  * @member {String} id - The unique id.
@@ -239,19 +261,38 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
  */
 angular.module('ngAlerts').factory('NgAlert', [
     'ngAlertsId',
-    function (ngAlertsId) {
+    'ngAlertsUtils',
+    function (ngAlertsId, ngAlertsUtils) {
         'use strict';
 
-        var NgAlert = function (id, msg, type) {
-            this.id = id || ngAlertsId.create();
-            this.msg = msg || '';
-            this.type = type || 'warning';
+        /**
+         * The alert object.
+         * @param {Object} args - The argument object.
+         * @param {Number} args.id - The unique id.
+         * @param {String} args.msg - The message.
+         * @param {String} [args.type=default] - The type of alert.
+         * @param {Number} [args.time=Date.now()] - The time of the notification (Miliseconds since Jan 1 1970).
+         */
+        var NgAlert = function (args) {
+            var params = angular.extend({
+                id: ngAlertsId.create(),
+                msg: '',
+                type: 'default',
+                time: Date.now()
+            }, args);
+
+            this.id = params.id;
+            this.msg = params.msg;
+            this.type = params.type;
+            this.time = params.time;
         };
-        
+
+        /**
+         * Returns the time using the ngAlertsUtils.
+         * @returns {String}
+         */
         NgAlert.prototype.getTime = function () {
-            
-            // @todo - Need this to say the actual time.
-            return "Yesterday";
+            return ngAlertsUtils.timeSince(this.time);
         };
 
         return NgAlert;
@@ -332,13 +373,17 @@ angular.module('ngAlerts').factory('ngAlertsMngr', [
          * @param {String} msg - The message in the alert.
          * @param {String} type - The alert type (success, warning, etc...).
          */
-        mngr.add = function (msg, type) {
+        mngr.add = function (data) {
             var i, ids = [];
-            for (i = 0; i < alerts.length; i += 1) {
-                ids.push(alerts[i].id);
+            if (!data.id) {
+                for (i = 0; i < alerts.length; i += 1) {
+                    ids.push(alerts[i].id);
+                }
+
+                data.id = ngAlertsId.create(ids);
             }
 
-            i = alerts.push(new NgAlert(ngAlertsId.create(ids), msg, type));
+            i = alerts.push(new NgAlert(data));
             fire('add', alerts[i - 1]);
         };
 
@@ -360,6 +405,78 @@ angular.module('ngAlerts').factory('ngAlertsMngr', [
         return mngr;
     }
 ]);
+
+/**
+ * Manages all notification systems.
+ */
+angular.module('ngAlerts').factory('ngAlertsUtils', [
+    function () {
+        'use strict';
+
+        var utils = {},
+            TIME = {};
+
+        /**
+         * Checks for plurality.
+         * @param {String} word - The singular word.
+         * @param {Number} value - The value to test for plurality.
+         * @param {String} [plural=@word + s] - Defaults to the word with an appended s.
+         * @returns {String} Which word to use.
+         */
+        utils.plural = function (word, value, plural) {
+            plural = plural || word + 's';
+            return (value === 1) ? word : plural;
+        };
+
+        // buil TIME
+        TIME.minute = 60;
+        TIME.hour = TIME.minute * 60;
+        TIME.day = TIME.hour * 24;
+        TIME.week = TIME.day * 7;
+        TIME.month = TIME.day * 30;
+        TIME.year = TIME.day * 365;
+
+        /**
+         * An estimated time since the given timestamp.
+         * @param {Number} timestamp - Number of miliseconds since Jan 1 1970.
+         * @returns {String} estimated value.
+         */
+        utils.timeSince = function (timestamp) {
+
+            var r = 0,
+                field = '',
+                seconds = Math.floor((Date.now() - timestamp) / 1000);
+
+            if (seconds < TIME.minute) {
+                return seconds + ' ' + utils.plural('second', seconds) + ' ago';
+            } else {
+                if (seconds < TIME.hour) {
+                    r = Math.round(seconds / TIME.minute);
+                    field = 'minute';
+                } else if (seconds < TIME.day) {
+                    r = Math.round(seconds / TIME.hour);
+                    field = 'hour';
+                } else if (seconds < TIME.week) {
+                    r = Math.round(seconds / TIME.day);
+                    field = 'day';
+                } else if (seconds < TIME.month) {
+                    r = Math.round(seconds / TIME.week);
+                    field = 'week';
+                } else if (seconds < TIME.year) {
+                    r = Math.round(seconds / TIME.month);
+                    field = 'month';
+                } else {
+                    r = Math.round(seconds / TIME.year);
+                    field = 'year';
+                }
+                return 'About ' + r + ' ' + utils.plural(field, r) + ' ago';
+            }
+        };
+
+        return utils;
+    }
+]);
+
 /**
  * Provides event systems to ngAlerts.
  */
@@ -415,10 +532,10 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "            </tbody>\n" +
     "        </table>\n" +
     "    </div>\n" +
-    "    <div ng-show=\"alerts.length === 0\">\n" +
+    "    <div class=\"empty-list\" ng-show=\"alerts.length === 0\">\n" +
     "        {{emptyList}}\n" +
     "    </div>\n" +
-    "</div>"
+    "</div>\n"
   );
 
 
@@ -427,7 +544,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "    <uib-alert ng-repeat=\"alert in alerts\" type=\"{{alert.type}}\" close=\"remove(alert.id)\">\n" +
     "        {{alert.msg}}\n" +
     "    </uib-alert>\n" +
-    "</div>"
+    "</div>\n"
   );
 
 
@@ -445,7 +562,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "    <div class=\"modal-footer\">\n" +
     "        <button class=\"btn btn-primary\" type=\"button\" ng-click=\"$dismiss()\">Close</button>\n" +
     "    </div>\n" +
-    "</div>"
+    "</div>\n"
   );
 
 
@@ -454,7 +571,7 @@ angular.module('ngAlerts').run(['$templateCache', function($templateCache) {
     "    <div class=\"popover-content\">\n" +
     "        <ng-alerts-list empty-text=\"{{emptyText}}\"></ng-alerts-list>\n" +
     "    </div>\n" +
-    "</div>"
+    "</div>\n"
   );
 
 }]);
