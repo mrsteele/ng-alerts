@@ -1,4 +1,4 @@
-/*! ng-alerts 2016-01-31 */
+/*! ng-alerts 1.0.4 2016-02-19 */
 'use strict';
 
 angular.module('ngAlerts', ['ui.bootstrap'])
