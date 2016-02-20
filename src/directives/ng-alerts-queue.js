@@ -14,6 +14,9 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
             link: function ($scope) {
                 $scope.alerts = [];
 
+                /**
+                 * Removes a specific alert by id.
+                 */
                 function remove(id) {
                     var i;
                     for (i = 0; i < $scope.alerts.length; i += 1) {
@@ -23,9 +26,12 @@ angular.module('ngAlerts').directive('ngAlertsQueue', [
                         }
                     }
                 }
-                
+
                 $scope.location = ngAlerts.options.queueLocation;
-                
+
+                /**
+                 * Public remove script.
+                 */
                 $scope.remove = function (id) {
                     ngAlertsMngr.remove(id);
                 };

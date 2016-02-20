@@ -42,13 +42,17 @@ angular.module('ngAlerts').factory('ngAlertsMngr', [
          * @param {String} msg - The message in the alert.
          * @param {String} type - The alert type (success, warning, etc...).
          */
-        mngr.add = function (msg, type) {
+        mngr.add = function (data) {
             var i, ids = [];
-            for (i = 0; i < alerts.length; i += 1) {
-                ids.push(alerts[i].id);
+            if (!data.id) {
+                for (i = 0; i < alerts.length; i += 1) {
+                    ids.push(alerts[i].id);
+                }
+
+                data.id = ngAlertsId.create(ids);
             }
 
-            i = alerts.push(new NgAlert(ngAlertsId.create(ids), msg, type));
+            i = alerts.push(new NgAlert(data));
             fire('add', alerts[i - 1]);
         };
 
