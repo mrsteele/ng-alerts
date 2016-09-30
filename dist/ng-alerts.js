@@ -1,4 +1,4 @@
-/*! ng-alerts 1.0.4 2016-02-19 */
+/*! ng-alerts 1.0.6 2016-09-30 */
 'use strict';
 
 angular.module('ngAlerts', ['ui.bootstrap'])
@@ -175,15 +175,23 @@ angular.module('ngAlerts').directive('ngAlertsPopover', [
             priority: 1000,
             link: function ($scope, $element, $attrs) {
 
-                $element.attr('uib-popover-template', 'templateUrl');
-                $element.attr('popover-is-open', 'isOpen');
+                if (!$attrs.uibPopoverTemplate) {
+                    $element.attr('uib-popover-template', 'templateUrl');
+                }
+
+                if (!$attrs.popoverIsOpen) {
+                    $element.attr('popover-is-open', 'isOpen');
+                }
+
                 $element.removeAttr('ng-alerts-popover');
 
                 if (!$attrs.popoverTrigger) {
                     $element.attr('popover-trigger', 'outsideClick');
                 }
 
-                $element.attr('popover-class', 'ng-alerts-popover-list');
+                if (!$attrs.popoverClass) {
+                    $element.attr('popover-class', 'ng-alerts-popover-list');
+                }
 
                 $scope.templateUrl = 'template/ng-alerts/sub/popover-list.html';
                 $scope.emptyText = $attrs.emptyText;
