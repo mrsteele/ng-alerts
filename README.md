@@ -1,5 +1,7 @@
 # ng-alerts
 
+A simple angular plugin to support basic ui alert messages.
+
 [![dependency Status](https://david-dm.org/mrsteele/ng-alerts.svg)](https://david-dm.org/mrsteele/ng-alerts#info=dependencies)
 [![devDependency Status](https://david-dm.org/mrsteele/ng-alerts/dev-status.svg)](https://david-dm.org/mrsteele/ng-alerts#info=devDependencies)
 
