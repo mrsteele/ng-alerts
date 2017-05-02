@@ -1,5 +1,7 @@
 # ng-alerts
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mrsteele/ng-alerts.svg)](https://greenkeeper.io/)
+
 An angular extension to manager front-end notifications and alerts.
 
 ### Status
